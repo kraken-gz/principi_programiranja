@@ -1,0 +1,3050 @@
+
+
+Značenje oznaka 
+
+!=   - nije jednako
+&   - AND  (i, logičko)
+|   - OR (ili, logičko)
+=> ili >=  - veće ili jednako od 
+<= ili =<    - manje ili jednako od 
+<     - manje od 
+>     - veće od 
+=     - presipanje u promenjivu
+==    - je jednako 
+/*  */ ili //  - su komentari, objašnjenja dela algoritma
+
+
+
+
+----------------------------------------
+
+Kreirati algoritam ili napisati pseudokod kojim se učitava matrica cijelih brojeva M a zatim je potrebno odrediti
+ukupnu sumu elemenata u parnim i u neparnim kolonama unijete matrice. Na izlazu je potrebno odštampati veću od te dvije
+sume
+
+Napomena: Parne kolone matrice se nalaze na indeksima (pozicijama) 0, 2, 4, 6 itd. a neparne kolone na indeksima (pozicijama)
+1, 3, 5, 7 itd.
+
+
+
+
+START
+M[100,100]:INTEGER
+K,R,,SUMP,SUMNP,I,J:INTEGER
+
+SUMP=0
+SUMNP=0
+INPUT K,R
+
+I=0
+
+
+WHILE I <= K
+	J=1
+	WHILE J<=R
+		INPUT M(I,J)
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+
+
+I=0
+WHILE I<=K
+	IF I == (I/2)*2
+		J=1
+		WHILE J<=R
+			SUMP=SUMP+M(I,J)
+			J=J+1
+		ENDWHILE
+	ELSE
+		J=1
+		WHILE J<=R
+			SUMNP=SUMNP+M(I,J)
+			J=J+1
+		ENDWHILE
+	ENDIF
+
+I=I+1
+ENDWHILE
+
+
+IF SUMP > SUMNP
+	OUTPUT SUMP
+ELSEIF SUMNP > SUMP
+	OUTPUT SUMNP
+ENDIF
+
+END
+
+
+---------------------------------
+
+
+
+Kreirati algoritam ili napisati pseudokod kojim se učitavaju matrice cijelih brojeva T i P. Potrebno je odraditi koja od
+dvije matrice ima veći broj parnih elemenata i štampati odgovarajuće obavještenje.
+
+
+
+START
+M[100,100],N[100,100]:INTEGER
+MXT,MXP,I,T,P,J:INTEGER
+
+INPUT T,P
+
+MXT=0
+MXP=0
+
+I=1
+
+
+WHILE I <= T
+	J=1
+	WHILE J<=T
+		INPUT M(I,J)
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+I=1
+
+WHILE I<=P
+	J=1
+	WHILE J<=P
+		INPUT N(I,J)
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+
+I=1
+WHILE I<= T
+	J=1
+	WHILE J<=T
+	J=1
+	WHILE J<=T
+		M=M(I,J)
+		IF M==(M/2)*2
+			MXT=MXT+1
+		ENDIF
+	J=J+1
+	ENDWHILE
+	I=I+1
+
+ENDWHILE
+
+I=1
+
+WHILE I<=P
+	J=1
+	WHILE J<=P
+		M=N(I,J)
+		IF M==(M/2)*2
+			MXP=MXP+1
+		ENDIF
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+IF MXT>MXP
+	OUTPUT "PRVA IMA VIŠE"
+ELSEIF MXP > MXT
+	OUTPUT "DRUGA IMA VIŠE"
+ENDIF
+END
+
+
+
+--------------------------
+
+Kreirati algoritam ili napisati pseudokod kojim se učitava niz cijelih brojeva X, dužine N. Pronaći koliko elemenata
+toga niza ima cifre poređane u rastući redosljed.
+
+Primjer: Za niz X=[121, 35, 4, 246, 266, 101], algoritam štampa broj 3, jer elementi [35, 4, 246] imaju cifre poređane u rastući
+redosljed
+
+
+
+
+
+START
+X[100]:INTEGER
+N,I,ELEM,M,P,P1,BR:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+ELEM=0
+BR=1
+I=1
+
+
+WHILE I<=N
+	M=X[I]
+	BR=1
+	WHILE M>9 & BR==1
+		P=M-(M/10)*10
+		M=M/10
+		IF M>9
+			P1=M-(M/10)*10
+			M=M/10
+			IF P1<P
+				BR=1
+			ELSE
+				BR=0
+			ENDIF
+		ELSE
+			ELEM=ELEM+1
+			BR=0
+			
+			ENDIF
+
+	ENDWHILE
+
+	
+	IF BR==1
+		ELEM=ELEM+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+OUTPUT ELEM
+END
+
+
+
+
+---------------------------------
+
+
+START
+Y[100],S[100]:CHAR
+I,J:INTEGER
+
+INPUT S
+J=1
+I=0
+
+WHILE S[I+1]!='\0'
+	I=I+1
+	IF S[I]>='0' & S[I]<='9'
+		Y[J]=S[I]
+		J=J+1
+	ENDIF
+ENDWHILE
+
+Y[J]='\0'
+
+J=1
+WHILE Y[J]!='\0'
+	I=I+1
+	S[I]=Y[J]
+	J=J+1
+ENDWHILE
+
+S[I+1]='\0'
+OUTPUT S
+END
+
+
+-----------
+
+- Kreirati algoritam kojim se učitava string S. Agoritam treba iz stringa S eliminiše sve karaktere koji nijesu mala slova.
+
+
+START
+S[100]:CHAR
+I,J:INTEGER
+
+INPUT S
+J=1
+I=1
+WHILE S[I]!='\0'
+	IF S[I]<'a' & S[I]>'z'
+		I=I+1
+	ELSE
+		S[J]=S[I]
+		I=I+1
+		J=J+1
+
+	ENDIF
+ENDWHILE
+S[J]='\0'
+OUTPUT S
+END
+
+
+----------------
+
+- Kreirati algoritam ili napisati pseudokod kojim se učitava matrica cijelih brojeva M a zatim je potrebno odrediti
+ukupnu sumu elemenata u parnim i u neparnim vrstama unijete matrice. Na izlazu je potrebno odštampati veću od te dvije
+sume.
+Napomena: Parne vrste matrice se nalaze na indeksima (pozicijama) 0, 2, 4, 6 itd. a neparne vrste na indeksima (pozicijama) 1,
+3, 5, 7 itd.
+
+
+
+START
+M[100,100]:INTEGER
+K,R,SUMP,SUMNP,I,J:INTEGER
+
+SUMP=0
+SUMNP=0
+
+INPUT K,R
+
+I=0
+WHILE I<=K
+	J=1
+	WHILE J<=R
+		INPUT M(I,J)
+		J=J+1
+	ENDWHILE 
+	I=I+1
+ENDWHILE 
+
+J=0
+WHILE J<=R
+	IF J==(J/2)*2
+		I=1
+		WHILE I<=K
+			SUMP=SUMP+M(I,J)
+			I=I+1
+		ENDWHILE
+	ELSE
+		I=1
+		WHILE I<=K
+			SUMNP=SUMNP+M(I,J)
+			I=I+1
+		ENDWHILE 
+	ENDIF
+	J=J+1
+ENDWHILE
+
+IF SUMP > SUMNP
+	OUTPUT SUMP
+ELSEIF SUMNP > SUMP
+	OUTPUT SUMNP
+ENDIF
+END
+
+
+----------------------------------
+
+
+START
+X[100]:INTEGER
+MAX,I,J,BR,N:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE 
+
+MAX=0
+I=1
+
+WHILE I<=N
+	IF X[I]<X[I+1]
+		J=1
+		BR=0
+		WHILE J<=N & BR==0
+			IF X[J]<X[J+1]
+				J=J+1
+			ELSE
+				BR=1
+			ENDIF
+			MAX=J
+			I=I+J
+			
+		
+	ELSE 
+		I=I+1
+	ENDIF
+ENDWHILE 
+OUTPUT MAX	
+END
+
+--------------------
+
+- Kreirati algoritam kojim se učitava string S. Algoritam treba da na kraj stringa S nadoveže karakter ‘#’, a nakon njega
+drugu polovinu stringa S. Odštampati izmijenjeni string.
+Primjer: String S=”ovcaivuna” treba da postane S=”ovcaivuna#vuna”.
+
+
+
+
+START
+S[100]:CHAR
+I,J:INTEGER
+
+INPUT S
+
+I=0
+WHILE S[I+1]!='\0'
+	I=I+1
+ENDWHILE 
+
+J=I/2
+I=I+1
+
+S[I]='#'
+
+WHILE J<I
+	I=I+1
+	S[I]=S[J]
+	J=J+1
+ENDWHILE 
+S[I+1]='\0'
+
+OUTPUT S
+
+END
+
+
+------------------
+
+START
+A[100],K,P,U,I,J,N:INTEGER
+B[100],PR:INTEGER
+
+INPUT N,K
+
+I=1
+WHILE I<=N
+	INPUT A[I]
+	I=I+1
+ENDWHILE 
+
+J=0
+I=1
+WHILE I<=K
+	P=A[I]
+	PR=1
+	WHILE P>9
+		U=P-(P/10)*10
+		PR=PR*U
+		P=P/10
+	ENDWHILE
+	IF PR>K
+		J=J+1
+		B[J]=A[I]
+	ENDIF
+	I=I+1
+ENDWHILE 
+
+I=1
+WHILE I<=J
+	OUTPUT B[J]
+	I=I+1
+ENDWHILE 
+END
+
+
+-------------------
+
+START
+S[100]:CHAR
+I,J,Z:INTEGER
+
+INPUT S
+
+I=0
+WHILE S[I+1] != '\0'
+	I=I+1
+ENDWHILE 
+
+Z=I/2
+J=1
+I=I+1
+S[I]='&'
+
+WHILE J<= Z
+	I=I+1
+	S[I]=S[J]
+	J=J+1
+ENDWHILE 
+S[I+1] = '\0'
+J=1
+WHILE J<=I
+	OUTPUT S[J]
+	J=J+1
+ENDWHILE 
+END
+
+-------------
+
+START 
+A[100],K,B[100],I,P,U,N,SUM:INTEGER
+
+INPUT N,K
+
+I=0
+WHILE I<N
+	I=I+1
+	INPUT A[I]
+ENDWHILE 
+
+J=0
+I=0
+WHILE J<K
+	J=J+1
+	P=A[I]
+	SUM=0
+	WHILE P>9
+		U=P-(P/10)*10
+		SUM=SUM+U
+	ENDWHILE 
+	IF SUM-(SUM/K)*K==0
+		I=I+1
+		B[I]=A[J]
+	ENDIF
+ENDWHILE
+
+J=1
+WHILE J<=I
+	OUTPUT B[J]
+	J=J+1
+ENDWHILE 
+END
+
+
+------------------
+
+slika 1, 3 zadatak
+
+
+Ako u matematici važi sledeća relacija
+
+ 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + ... = \sum_{n=0}^{\infty} \frac{1}{2^n} = 2 \\
+
+Kreirati algoritam koji, za unijetu realnu vrednost eps, treba da pronađe i odštampa najmanji prirodan broj K takav da je zadovoljeno :
+
+
+ 2- \sum_{n=0}^{K} \frac{1}{2^n}  < eps \\
+
+
+
+
+START 
+EPS, Z, JU:FLOAT
+JIJ,U,Y,K:INTEGER
+
+INPUT EPS
+
+JU=1
+K=1
+Z=1
+Y=1
+U=1
+JIJ=1
+
+WHILE Z-JU<EPS
+	Z=JIJ
+	K=K+1
+	WHILE Z>0
+		U=U*Y
+		Z=Z-1
+	ENDWHILE
+	JU=1/Z
+	JIJ=JIJ+1
+ENDWHILE
+OUTPUT K
+END
+
+
+-------------------
+
+
+Kreirati algoritam kojim se učitava niz cijelih brojeva A dužine N i cijeli broj K. Potrebno je formirati niz Y od prvih K
+elemenata niza A koji među svojim ciframa imaju cifru K.
+
+
+
+START
+BR,J,P,Z,A[100],Y[100],I,N,K:INTEGER
+
+INPUT N,K
+
+I=1
+
+WHILE I<=N
+	INPUT A[I]
+	I=I+1
+ENDWHILE 
+
+J=1
+I=1
+WHILE I<=K
+	Z=A[I]
+	BR=0
+	WHILE Z>9 & BR==0
+		P=Z-(Z/10)*10
+		IF P==K
+			Y[J]=A[I]
+			BR=1
+			J=J+1
+		ENDIF
+		Z=Z/10
+	ENDWHILE
+	I=I+1
+ENDWHILE 
+
+I=1
+WHILE I<=K
+	OUTPUT Y[I]
+	I=I+1
+ENDWHILE 
+
+END
+
+
+
+--------------
+
+
+START 
+X,Z[100],I,J,P,K,BR:INTEGER
+
+INPUT X
+
+P=X
+I=0
+WHILE P>9
+	K=P-(P/10)*10
+	I=I+1
+	Z[I]=K
+	P=P/10
+ENDWHILE 
+
+BR=0
+J=1
+
+WHILE J<=I
+	IF Z[J]>Z[J+1]
+		J=J+1
+	ELSE
+		BR=1
+		J=J+1
+	ENDIF
+
+ENDWHILE
+
+IF BR==1
+	OUTPUT "CIFRE NISU U RASTUĆEM PORETKU"
+ELSE 
+	OUTPUT "CIFRE SU U RASTUĆEM PORETKU"
+ENDIF
+
+END
+
+
+
+----------------------
+
+START 
+BR,X,Z[100],I,J,P,K:INTEGER
+
+INPUT X
+
+P=X
+I=0
+
+WHILE P>9
+	K=P-(P/10)*10
+	I=I+1
+	Z[I]=K
+	P=P/10
+ENDWHILE 
+
+BR=0
+J=1
+WHILE J<=I
+	IF Z[J]<Z[J+1]
+		J=J+1
+	ELSE 
+		BR=1
+		J=J+1
+	ENDIF
+ENDWHILE 
+
+IF BR==1
+	OUTPUT "CIFRE NISU U OPADAJUĆEM PORETKU"
+ELSE 
+	OUTPUT "CIFRE SU U OPADAJUĆEM PORETKU"
+ENDIF
+END
+
+
+-----------------
+
+
+START 
+J,K,N,I,P,Z,U,A[100],B[100]:INTEGER
+
+INPUT N,K
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE 
+
+U=0
+J=0
+I=1
+
+WHILE I<=K
+	Z=A[I]
+	WHILE Z>9
+		P=Z-(Z/10)*10
+		Z=Z/10
+	ENDWHILE 
+	IF P==K
+		J=J+1
+		U=U+1
+		B[J]=A[I]
+	ENDIF 
+	I=I+1
+ENDWHILE 
+
+I=1
+WHILE I<=U
+	OUTPUT B[I]
+	I=I+1
+ENDWHILE 
+
+END
+
+
+--------------------------
+
+
+Kreirati algoritam kojim se unosi cio broj X. Provjeriti koja se cifra najviše puta javlja u broju X. Štampati odgovarajuće
+obavještenje.
+
+OVAJ TI JE JAKO VAŽAN , da ga zapamtiš !!
+
+
+
+START
+Z,X,MAX_COUNT,RESULT,D,COUNT:INTEGER
+
+INPUT X
+
+IF X<0
+	X=-X
+ENDIF
+
+MAX_COUNT=1
+RESULT=0
+D=0
+
+WHILE D>=0 & D<=9
+	COUNT=0
+	Z=X
+	WHILE Z>9
+		IF Z-(X/10)*10 == D
+			COUNT = COUNT +1
+		ENDIF
+		Z=Z/10
+	ENDWHILE 
+	IF COUNT >= MAX_COUNT
+		MAX_COUNT=COUNT
+		RESULT=D
+	ENDIF
+	D=D+1
+ENDWHILE 
+
+OUTPUT "CIFRA KOJA SE NAJVIŠE PONAVLJA U BROJU JE: "
+OUTPUT RESULT
+
+END
+
+-----------
+
+Prebaci velika slova u mala slova u stringu S
+
+
+START  
+S[100]:CHAR
+I:INTEGER
+
+INPUT S
+
+I=1
+WHILE S[I]!='\0'
+	IF S[I]>='A'& S[I]<='Z'
+		S[I]=int2char(char2int(X[I])+char2int('a')-char2int('A'))
+	ENDIF
+	
+	I=I+1
+ENDWHILE 
+OUTPUT S
+END
+
+
+----------------------
+
+Kreirati algoritam kojim se učitava string S. Algoritam treba da iz stringa S eliminiše velika slova.
+
+
+START
+S[100]:CHAR
+I,J:INTEGER
+
+INPUT S
+
+J=1
+I=1
+WHILE S[I]!='\0'
+	IF S[I]>='A' & S[I]<='Z'
+		I=I+1
+	ELSE
+		S[J]=S[I]
+		J=J+1
+		I=I+1
+	ENDIF
+ENDWHILE
+
+S[J]='\0'
+OUTPUT S
+END
+
+---------------------
+
+Kreirati algoritam kojim se unosi cio broj X. Provjeriti da li su sve cifre broja X različite. Štampati odgovarajuće
+obavještenje.
+
+
+
+START
+U,J,I,X,P,K,RAZ,Y[100]:INTEGER
+
+INPUT X
+RAZ=0
+P=X
+I=1
+U=1
+WHILE P>9
+	K=P-(P/10)*10
+	Y[I]=K
+	I=I+1
+	U=U+1
+	P=P/10
+ENDWHILE
+
+I=1
+J=1
+
+WHILE I<U
+	J=1
+	WHILE J<U
+		IF J==I
+			J=J+1
+		ELSEIF Y[I]==Y[J]
+			RAZ=1
+			J=J+1
+		ENDIF
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+IF RAZ==1
+	OUTPUT "CIFRE NISU RAZLIČITE"
+ELSE		
+	OUTPUT "CIFRE SU RAZLIČITE"
+ENDIF
+END
+
+-----------------
+
+- Kreirati algoritam kojim se učitava string S. Algoritam treba da na kraj stringa S nadoveže karakter ‘#’, a nakon njega
+sve cifre stringa S. Odštampat izmijenjeni string.
+Pojašnjenje: String S=”Programiranje 1 i 2’ treba da postane S=”Programiranje 1 i 2#12”.
+
+
+START
+S[100],B[100]:CHAR
+I,J:INTEGER
+
+INPUT S
+
+J=0
+I=0
+WHILE S[I+1]!='\0'
+	I=I+1
+	IF S[I]>='0' & S[I]<='9'
+		J=J+1
+		B[J]=S[I]
+	ENDIF
+ENDWHILE
+
+B[J+1]='\0'
+
+I=I+1
+S[I]='#'
+
+J=1
+WHILE B[J]!='\0'
+	I=I+1
+	S[I]=B[J]
+	J=J+1
+ENDWHILE
+
+S[I+1]='\0'
+OUTPUT S
+END
+
+
+------------------------
+
+
+- Kreirati algoritam ili napisati pseudokod kojim se učitava niz cijelih brojeva X, dužine N. Iz datog niza formirati i
+štampati podniz elemenata koji su manji od aritmetičke sredine niza X i čija je cifra jedinica manja od 5.
+Primjer: Traženi podniz za niz X=[12, 23, 5, 57, 46, 31] je [12, 23], jer su brojevi 12 i 23 manji od broja 29, koji predstavlja
+aritmetičku sredinu niza X, a uz to njihove cifre jedinica su manje od 5.
+
+
+
+
+START 
+Y[100],X[100]:INTEGER
+N,M,K,I,AR:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=0
+SUM=0
+WHILE I<N
+	I=I+1
+	SUM=SUM+X[I]
+ENDWHILE
+
+AR=SUM/I
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	K=M-(M/10)*10
+	IF X[I]<AR & K<5
+		J=J+1
+		Y[J]=X[I]
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=J
+	OUTPUT Y[I]
+	I=I+1
+ENDWHILE 
+END
+
+
+------------
+
+
+- Kreirati algoritam ili napisati pseudokod kojim se učitava matrica cijelih brojeva A, dimenzija MxN. Potrebno je
+odrediti sumu elemenata treće vrste i pete kolone matrice M. Ukoliko su dimenzije matrice takve da nema treće vrste ili pete
+kolone, štampati odgovarajuće obavještenje.
+
+
+START
+M[100,100]:INTEGER
+K,R,SUM_3V,SUM5K,I,J:INTEGER
+
+INPUT K,R
+I=1
+WHILE I<=K
+	J=1
+	WHILE J<=R
+		INPUT M(I,J)
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+IF K<5 & R<3
+	OUTPUT "NE MOŽE!"
+ELSE
+	SUM_3K=0
+	SUM_5K=0
+	J=1
+	WHILE J<=R
+		SUM_5K=SUM_5K+M(5,J)
+		J=J+1
+	ENDWHILE
+	I=1
+	WHILE I<=K
+		SUM_3V=SUM_3V+M(I,3)
+		I=I+1
+	ENDWHILE
+ENDIF
+
+OUTPUT SUM_3V, SUM_5K
+END
+
+-------------
+
+- Kreirati algoritam kojim se učitava string S i koji određuje da li taj string może predstavljati prezime osobe
+sastavljeno od dvije riječi (npr. Jovanović-Popović). Riječi treba da počinju velikim slovom, a nakon toga slijedi proizvoljan broj
+malih slova. Riječi moraju biti razdvojene jednim karakterom ‘-‘.
+
+START
+S[100]:CHAR
+BR,I:INTEGER
+
+INPUT S
+
+BR=1
+
+IF S[1]>='A' & S[1]<='Z'
+	I=2
+	WHILE S[I+1]!='\0'
+		IF S[I]=='-'
+			IF S[I+1]>='A' & S[I+1]<='Z'
+				BR=0
+			ENDIF
+		ENDIF
+		I=I+1
+	ENDWHILE
+ENDIF
+
+IF BR==0
+	OUTPUT "OVO JE PREZIME"
+ELSE
+	OUTPUT "NIJE PREZIME"
+ENDIF
+END
+
+
+
+---------------
+
+
+START
+J,I,X[100],Y[100]N,Z,M:INTEGER
+
+INPUT N
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=1
+I01
+
+WHILE I<= N
+	M=X[I]
+	M=M/10
+	K=M-(M/10)*10
+	IF K==(K/2)*2
+		Y[J]=X[I]
+		J=J+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+
+WHILE I<J
+	OUTPUT Y[I]
+	I=I+1
+ENDWHILE
+
+END
+
+
+-----------------
+
+
+- Algoritam kojim se unosi niz realnih brojeva X, dužine N. Uneti niz je potrebno izmeniti tako da se između svaka 2 elementa umetne aritmetička sredina ta dva elementa. Pri izmenama u nizu X, ne smiju se koristiti pomoćni nizovi. Na kraju odštampati dobijeni niz X.
+
+primer: uneti niz: X={1,2,5,4,3,8,2,4}, potrebno izmeniti da se dobije:
+X={1,2,3.3,5,4,4.2,3,5.6,8,2,6.1,4}
+
+
+
+START
+MIS, SRE, X[100]:FLOAT
+N,I,J,Z,BR:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=3
+J=N
+Z=N
+
+WHILE I<=N
+	SRE=(X[I]+X[I-1])/2
+	BR=0
+	Z=Z+1
+	J=Z
+	WHILE BR==0
+		MIS=X[J-2]
+	  	X[J]=X[J-1]
+		X[J-1]=MIS
+		J=J-1
+		IF J-3 == I
+			MIS=X[J-2]
+			X[J]=X[J-1]
+			X[J-1]=MIS
+			X[J-2]=SRE
+			I=I+2
+			BR=1
+		ENDIF
+	ENDWHILE
+ENDWHILE
+
+
+I=1
+
+WHILE I<Z
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+
+
+
+-------------------------
+
+
+- Napisati algoritam kojim se unosi niz realnih brojeva X, dužine N. Unijeti  niz je potrebno izmijeniti tako da se svakom elementu u nizu zamijene cifre najveće i najmanje težine
+
+
+START
+REZ,X[100],C,P,T,U:FLOAT
+I,N:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	C=X[I]
+	P=1
+	WHILE C>9
+		C=C/10
+		P=P*10
+	ENDWHILE
+	U=X[I]
+	T=U-(U/10)*10
+	REZ=X[I]-C*P-T+T*P+C
+	X[I]=REZ
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+----------------------------------
+
+
+
+Kreirati algoritam i napisati pseudokod kojim se učitavaju dva cijela broja, X i Y. U slučaju da su oba broja pozitivna, potrebno je pronaći sumu cijelih brojeva između ta dva broja. U suprotnom, štampati koji je veći od ta dva broja.
+
+
+
+X,Y,SUM,I:INTEGER
+
+INPUT X,Y
+
+IF X>0 & Y>0
+	SUM=0
+	IF X>Y
+		I=Y+1
+		WHILE I<X
+			SUM=SUM+I
+			I=I+1
+		ENDWHILE
+		OUTPUT SUM
+			
+
+	ELSE
+		I=X
+		WHILE I<Y
+			SUM=SUM+I
+			I=I+1
+		ENDWHILE
+		OUTPUT SUM
+	
+	ENDIF
+	
+ELSE
+	IF X>Y
+		OUTPUT "PRVI JE VECI"
+	ELSE
+		OUTPUT "DRUGI JE VECI"
+	ENDIF
+ENDIF
+END
+
+
+--------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz realnih brojeva X, dužine N, i koji određuje broj elemenata niza X koji su veći i od prvog i od posljednjeg elementa niza. Štampati dobijeni broj. Ukoliko nema nijednog takvog elementa, potrebno je štampati poruku “Nema traženih elemenata”.
+
+
+START
+X[100]:FLOAT
+N,BR,I:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BR=O
+
+I=2
+WHILE I<N
+	IF X[I]>X[1] & X[I]>X[N]
+		BR=BR+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF BR==0
+	OUTPUT "NEMA TRAZENIH ELEMENATA"
+ELSE
+	OUTPUT BR
+ENDIF
+END
+
+
+---------------------------
+
+Kreirati algoritam i napisati pseudokod kojim se učitavaju dva realna broja, X i Y. U slučaju da su oba broja negativna, potrebno je štampati zbir kvadrata ta dva broja. U suprotnom, odrediti i štampati sumu prirodnih brojeva manjih od X2 (X na kvadrat)
+
+
+START
+X,Y,SUM:FLOAT
+I,J:INTEGER
+
+INPUT X,Y
+
+SUM=0
+
+IF X<0 & Y<0
+	SUM=X*X+Y*Y
+ELSE
+	J=X*X
+	I=1
+	WHILE I<J
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+ENDIF
+
+OUTPUT SUM
+END
+
+
+
+-------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva X, dužine N, i koji u svaki element veći od kvadrata prvog elementa niza upisuje broj 100. Ukoliko nema nijednog takvog elementa, potrebno je štampati poruku “Tražio sam, al’ nisam našao!”
+
+
+
+START
+X[100]:INTEGER
+BR,N,I,KV:INTEGER
+
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+KV=X[1]*X[1]
+	
+BR=0
+I=2
+WHILE I<=N
+	IF X[I]>KV
+		X[I]=100
+		BR=1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF BR==0
+	OUTPUT "TRAZIO SAM, ALI NISAM NASAO!"
+ENDIF
+
+END
+
+-----------------
+
+
+Kreirati algoritam i napisati pseudokod kojim se učitava cijeli broj M i u slučaju da je on pozitivan, potrebno je pronaći i štampati sumu prirodnih brojeva manjih od broja M. U suprotnom, pronaći i štampati sumu parnih prirodnih brojeva manjih od kvadrata broja M.
+
+
+START
+M,SUM,I,KV:INTEGER
+
+INPUT M
+
+SUM=0
+IF M>0
+	I=1
+	WHILE I<M
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+ELSE
+	KV=M*M
+	I=2
+	WHILE I<KV
+		SUM=SUM+I
+		I=I+2
+	ENDWHILE
+ENDIF
+
+OUTPUT SUM
+END
+
+
+
+----------------------
+
+Kreirati algoritam i napisati pseudokod kod koga se unosi cijeli broj N i niz realnih brojeva X[1], X[2], ..., X[N], i koji računa i štampa proizvod onih članova niza koji su parni i veći od nule. Ukoliko ne postoji nijedan takav element, potrebno je štampati poruku “Nema traženih elemenata”. 
+
+
+
+START
+I,N,BR:INTEGER
+X[100],PR:FLOAT
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BR=0
+
+PR=1
+I=1
+WHILE I<=N
+	IF X[I]==(X[I]/2)*2  & X[I]>0
+		PR=PR*X[I]
+		BR=1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF BR==0
+	OUTPUT "NEMA TRAZENIH ELEMENATA"
+ENDIF
+END
+
+
+
+------------------------
+
+Kreirati algoritam i napisati pseudokod kojim se učitava cijeli broj M i u slučaju da je on pozitivan, potrebno je pronaći i štampati sumu prirodnih brojeva manjih od broja M. U suprotnom, pronaći i štampati sumu parnih prirodnih brojeva manjih od kvadrata broja M.
+
+
+START
+M,SUM,I,KV:INTEGER
+
+
+INPUT M
+
+SUM=0
+
+IF M>0
+	I=1
+	WHILE I<M
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+	
+ELSE
+	KV=M*M
+	I=2
+	WHILE I<KV
+		SUM=SUM+I
+		I=I+2
+	ENDWHILE
+ENDIF
+
+OUTPUT SUM
+END
+
+------------------
+
+
+Kreirati algoritam i napisati pseudokod kod koga se unosi cijeli broj M i niz realnih brojeva Y[1], Y[2], ..., Y[M], i koji računa i štampa sumu onih članova niza koji su pozitivni i veći od zbira posljednjeg i pretposljednjeg elementa niza Y. Ukoliko ne postoji nijedan takav element, potrebno je štampati poruku “Ne nadjoh!”.
+
+
+
+START
+M,I,BR:INTEGER
+Y[100],SUM,ZB:FLOAT
+	
+
+INPUT M
+
+I=1
+WHILE I<=M
+	INPUT Y[I]
+	I=I+1
+ENDWHILE
+
+ZB=Y[M]+Y[M-1]
+BR=0
+SUM=0
+
+I=1
+WHILE I<=N
+	IF Y[I]>0 & Y[I]>ZB
+		SUM=SUM+Y[I]
+		BR=1
+
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF BR==0
+	OUTPUT "NE NADJOH"
+ELSE 
+	OUTPUT SUM
+ENDIF
+
+END		
+
+-----------------------
+
+Kreirati algoritam i napisati pseudokod kojim se učitava cijeli broj K i u slučaju da je on neparan, potrebno je pronaći i štampati sumu prirodnih brojeva manjih od kvadrata broja K. U suprotnom, učitati cijeli broj M i pronaći i štampati zbir kubova brojeva M i K.
+
+
+START
+K,SUM,I,KV,M,KUB:INTEGER
+
+INPUT K
+
+
+
+IF K!=(K/2)*2
+	KV=K*K
+	SUM=0
+	I=1
+	WHILE I<KV
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+ELSE
+	INPUT M
+	SUM=K*K*K+M*M*M
+ENDIF
+
+OUTPUT SUM
+END
+
+---------------
+
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz realnih brojeva X, dužine N, i koji svaki element niza koji je veći od N umanjuje za N. Štampati novodobijeni niz X.
+
+
+
+START
+X[100]:FLOAT
+N,I:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	IF X[I]>N
+		X[I]=X[I]-N
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+-----------------
+
+Kreirati algoritam i napisati pseudokod kojim se učitavaju tri cijela broja, A, B i C. U slučaju da su sva tri broja pozitivna, potrebno je pronaći sumu cijelih brojeva od 1 do najmanjeg od unešenih brojeva. U suprotnom, štampati zbir prvog, kvadrata drugog i kuba trećeg broja.
+
+
+START
+A,B,C,SUM,MIN:INTEGER
+
+
+INPUT A,B,C
+
+SUM=0
+
+IF A>0 & B>0 & C>0
+	
+	MIN=A
+	
+	IF B<MIN
+		MIN=B
+	ENDIF
+	
+	IF C<MIN
+		MIN=C
+	ENDIF
+
+
+
+	I=1
+	WHILE I<MIN
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+	
+
+ELSE
+
+	SUM=A+B*B+C*C*C
+ENDIF
+
+OUTPUT SUM
+END
+
+
+
+------------------
+
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva X, dužine M, i koji svaki element niza koji je djeljiv sa M uvećava za M, dok ostale umanjuje za 1. Štampati novodobijeni niz X.
+
+
+START
+X[100]:INTEGER
+M,I,J:INTEGER
+
+
+INPUT M
+
+I=1
+WHILE I<=M
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=M
+	IF X[I]==(X[I]/M)*M
+		X[I]=X[I]+M
+		J=1
+		WHILE J<=M
+			IF J==I
+				J=J+1
+			ELSE
+				X[J]=X[J]-1
+				J=J+1
+			ENDIF
+		ENDWHILE
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=M
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+
+-------------------
+
+
+Kreirati algoritam i napisati pseudokod kojim se učitavaju dva cijela broja, X i Y. U slučaju da su oba broja parni i pozitivni, potrebno je pronaći sumu cijelih brojeva od 1 do manjeg od unešenih brojeva. U suprotnom, štampati zbir prvog i dvostrukog drugog unešenog broja.
+
+
+
+
+X,Y,SUM,I,MIN:INTEGER
+
+
+INPUT X,Y
+
+SUM=0
+IF X>0 & X==(X/2)*2  & Y>0  & Y==(Y/2)*2
+	
+	MIN=X
+	IF Y<MIN
+		MIN=Y
+	ENDIF
+	
+	I=1
+	WHILE I<MIN
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+ELSE
+	SUM=X+Y+Y
+ENDIF
+
+OUTPUT SUM
+END
+
+
+-----------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz realnih brojeva Z, dužine K, i koji u slučaju da su prvi i posljednji element niza Z veći od K, određuje i štampa sumu od drugog do pretprosljednjeg elementa niza Z. U suprotnom, u sve elemente niza manje od 10 upisati broj 10. Štampati novodobijeni niz X.
+
+
+START 
+Z[100],X[100],SUM:FLOAT
+K,I:INTEGER	
+
+
+INPUT K
+
+I=1
+WHILE I<=K
+	INPUT Z[I]
+	I=I+1
+ENDWHILE
+
+IF Z[1]>K & Z[K]>K
+	SUM=0
+	I=2
+	WHILE I<K
+		SUM=SUM+Z[I]
+		I=I+1
+	ENDWHILE
+	OUTPUT SUM
+	
+ELSE 
+	J=1
+	I=1
+	WHILE I<=K
+		IF Z[I]<10
+			Z[I]=10
+			X[J]=10
+			J=J+1
+			I=I+1
+		ELSE
+			X[J]=Z[I]
+			J=J+1
+			I=I+1
+		ENDIF
+	ENDWHILE
+	I=1
+	WHILE I<J
+		OUTPUT X[I]
+		I=I+1
+	ENDWHILE
+ENDIF
+
+END
+
+
+---------------------
+
+Kreirati algoritam i napisati pseudokod kojim se učitava cijeli broj M i u slučaju da je kvadrat tog broja djeljiv sa 6 potrebno je pronaći i štampati sumu prirodnih brojeva između 6 i 66. U suprotnom, štampati kub broja M umanjen za 2.
+
+
+START
+M,KV,SUM,I,J,KUB:INTEGER
+
+INPUT M
+
+KV=M*M
+
+IF KV==(KV/6)*6
+		I=7
+		J=66
+		SUM=0
+		WHILE I<J
+			SUM=SUM+I
+			I=I+1
+		ENDWHILE
+		OUTPUT SUM
+ELSE
+	KUB=M*M*M-2
+	OUTPUT KUB
+ENDIF
+
+END
+
+----------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva Z, dužine N, i koji u slučaju da su prva dva elementa niza Z djeljivi sa N, određuje sumu od trećeg do posljednjeg elementa niza Z. U suprotnom, u sve elemente niza veće od N upisati broj 14. Štampati novodobijeni niz X.
+
+
+	
+START
+Z[100],N,SUM,X[100],J,I:INTEGER		
+		
+
+INPUT N
+	
+I=1
+WHILE I<=N
+	INPUT Z[I]
+	I=I+1
+ENDWHILE
+
+IF Z[1]==(Z[1]/N)*N  & Z[2]==(Z[2]/N)*N
+	I=3
+	SUM=0
+	WHILE I<=N
+		SUM=SUM+Z[I]
+		I=I+1
+	ENDWHILE
+	OUTPUT SUM
+ELSE 
+	I=1
+	J=1
+	WHILE I<=N
+		IF Z[I]>N
+			Z[I]=14
+			X[J]=14
+			J=J+1
+			I=I+1
+		ELSE
+			X[J]=Z[I]
+			I=I+1
+			J=J+1
+		ENDIF
+	ENDWHILE
+	I=1
+	WHILE I<J
+		OUTPUT X[I]
+		I=I+1
+	ENDWHILE
+ENDIF
+END
+
+
+------------
+
+
+Kreirati algoritam i napisati pseudokod kojim se učitava cijeli broj K i u slučaju da je taj broj djeljiv sa 7 potrebno je pronaći i štampati sumu parnih prirodnih brojeva između 7 i 777. U suprotnom, štampati kvadrat broja K umanjen za 7.
+
+
+
+START
+K,I,J,SUM,KV:INTEGER
+
+
+INPUT K
+
+IF K==(K/7)*7
+	I=8
+	J=777
+	SUM=0
+	WHILE I<J
+		SUM=SUM+I
+		I=I+2
+	ENDWHILE
+	OUTPUT SUM
+ELSE
+	KV=K*K-7
+	OUTPUT KV
+ENDIF
+END
+
+-------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva X, dužine N, i cijeli broj K i koji svaki element niza koji je djeljiv brojem K umanjuje K puta. Štampati novodobijeni niz i broj modifikovanih elemenata niza.
+
+
+
+START
+X[100],N,K,BR,I:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BR=0
+I=1
+WHILE I<=N
+	IF X[I]==(X[I]/K)*K
+		X[I]=X[I]/K
+		BR=BR+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+OUTPUT BR
+END
+
+
+
+-------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju dva cijela broja N i M, i štampa njihov zbir ako je N veći od M, kvadrat njihovog zbira ako su jednaki i sumu prvih 25 prirodnih brojeva ako je N manji od M.
+
+
+START
+N,M,SUM,KVS,I:INTEGER
+	
+
+INPUT N,M
+
+IF N>M
+	SUM=N+M
+	OUTPUT SUM	
+
+ELSEIF N==M
+	SUM=N+M
+	KV=SUM*SUM
+	OUTPUT KV
+
+ELSE
+	I=1
+	SUM=0
+	WHILE I<=25
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+	OUTPUT SUM
+ENDIF
+END
+
+
+---------------------
+
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva X, dužine N, i dva cijela broja P i Q (P<Q, i to ne treba provjeravati). U svaki element niza koji je veći od Q upisati broj Q, a u svaki koji je manji od P upisati P. Štampati novodobijeni niz i broj modifikovanih elemenata niza.
+
+
+
+
+START
+X[100],N,P,Q,I,BR:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BR=0
+I=1
+WHILE I<=N
+	IF X[I]>Q
+		X[I]=Q
+		BR=BR+1
+	ELSEIF X[I]<P
+		X[I]=P
+		BR=BR+1
+	ENDIF
+	I=I+1
+ENDWHILE 
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+OUTPUT BR
+END
+
+-----------------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju tri cijela broja N, M i P, i štampa kub broja P ako je N djeljivo sa M, odnosno suma prvih P2 (P na kvadrat) prirodnih brojeva ako N nije djeljivo sa M.
+
+
+
+N,M,P,KUBP,SUM,PKV:INTEGER
+
+
+INPUT N,M,P
+
+
+IF N==(N/M)*M
+	KUBP=P*P*P
+	OUTPUT KUBP
+ELSE
+	SUM=0
+	PKV=P*P
+	I=1
+	WHILE I<PKV
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+	OUTPUT SUM
+ENDIF
+END
+
+
+
+------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz realnih brojeva X, dužine M, i cijeli broj P. Ako je P<M, treba sabrati prvih P članova niza i odštampati dobijeni zbir. U suprotnom, odrediti i štampati koliko elemenata niza je veće od P.
+
+
+START
+X[100],SUM:FLOAT
+M,P,BR:INTEGER
+
+
+
+INPUT M
+
+I=1
+WHILE I<=M
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+IF P<M
+	SUM=0
+	I=1
+	WHILE I<=P
+		SUM=SUM+X[I]
+		I=I+1
+	ENDWHILE
+	OUTPUT SUM
+ELSE 
+	I=1
+	BR=0
+	WHILE I<=M
+		IF X[I]>P
+			BR=BR+1
+		ENDIF
+		I=I+1
+	ENDWHILE
+	OUTPUT BR
+ENDIF
+END
+
+
+
+--------------------------
+
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju tri cijela broja A, B i C, i štampa zbir kvadrata brojeva A i B ako je C parno, odnosno suma prirodnih brojeva većih od 50 i manjih od 100 ako C nije parno.
+
+
+START
+A,B,C,SUM,I:INTEGER
+
+
+INPUT A,B,C
+
+IF C==(C/2)*2
+	SUM=A*A+B*B
+	
+ELSE
+	I=51
+	SUM=0
+	WHILE I<100
+		SUM=SUM+I
+		I=I+1
+	ENDWHILE
+ENDIF
+OUTPUT SUM
+END
+
+
+--------------------
+
+
+Kreirati algoritam i napisati pseudokod kod koga se unosi cio broj N i niz realnih brojeva X[1], X[2], ..., X[N] i koji računa i štampa vrijednost izraza:
+Z = (X[1] + 1) * (X[2] + 2) *...* (X[N] + N)
+
+
+X[100],Z:FLOAT
+N,I:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+Z=1
+I=1
+WHILE I<=N
+	Z=Z*(X[I]+I)
+	I=I+1
+ENDWHILE
+OUTPUT Z
+END
+
+-------------------------
+
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju tri realna broja X, Y i Z, i štampa zbir kubova brojeva X i Y ako je X veće od Z, odnosno kub zbira brojeva X i Y ako X nije veće od Z.
+
+
+
+START
+X,Y,Z,SUM,KUB:FLOAT
+
+INPUT X,Y,Z
+
+IF X>Z
+	SUM=X*X+Y*Y
+	OUTPUT SUM
+ELSE
+	SUM=X+Y
+	KUB=SUM*SUM*SUM
+	OUTPUT KUB
+ENDIF
+
+END
+
+
+-------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva X, dužine N, i cijeli broj A i koji sabira sve elemente niza čiji je kvadrat manji od A. Štampati dobijenu sumu i broj sabranih elemenata niza.
+
+
+START
+X[100],N,I,A,KV,SUM,BR:INTEGER
+
+
+INPUT N,A
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+I=1
+SUM=0
+BR=0
+WHILE I<=N
+	KV=X[I]*X[I]
+	IF KV<A
+		SUM=SM+X[I]
+		BR=BR+1
+		I=I+1	
+
+	ENDIF
+	I=I+1
+ENDWHILE 
+
+OUTPUT BR,SUM
+END
+
+
+
+-----------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju tri cijela broja A, B i C, i određuje koliko je učitanih brojeva parno. Ako nije učitan nijedan paran broj, štampati broj 1; ako je učitan tačno jedan paran broj, štampati broj 2; ako su učitana dva parna broja, štampati broj 3. Ako su svi učitani brojevi parni, štampati njihovu sumu.
+
+
+START
+A,B,C,BRP,SUM:INTEGER
+
+
+
+INPUT A,B,C
+
+BR=0
+
+IF A==(A/2)*2
+	BR=BR+1
+ENDIF
+
+IF B==(B/2)*2
+	BR=BR+1
+ENDIF
+
+IF C==(C/2)*2
+	BR=BR+1
+ENDIF
+
+IF BR==0
+	OUTPUT 1
+ELSEIF BR==1
+	OUTPUT 2
+ELSEIF BR==2
+	OUTPUT 3
+ELSE
+	SUM=A+B+C
+	OUTPUT SUM
+ENDIF
+END
+
+-----------------------
+
+
+Kreirati algoritam i napisati pseudokod kod koga se unosi cio broj M i niz realnih brojeva Y, dužine M, određuje srednja vrijednost niza S, i određuje i štampa vrijednost izraza:
+Z = (Y[1] - S) * (Y[2] - S) *...* (Y[M] - S)
+
+
+M,I:INTEGER
+Y[100],S,Z,SUM:FLOAT
+
+
+INPUT M
+
+I=1
+WHILE I<=M
+	INPUT Y[I]
+	I=I+1
+ENDWHILE
+
+SUM=0
+I=0
+WHILE I<M
+	I=I+1
+	SUM=SUM+Y[I]
+ENDWHILE 
+
+S=SUM/I
+
+Z=1
+I=1
+WHILE I<=N
+	Z=Z*(Y[I]-S)
+	I=I+1
+ENDWHILE
+
+OUTPUT Z
+END
+
+---------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju dva realna broja X i Y, i u slučaju da je X>Y, štampa kub zbira brojeva X i Y, odnosno kvadrat zbira brojeva X i Y ako X nije veće od Y.
+
+
+
+X,Y,KUB,KV,SUM:FLOAT
+
+
+INPUT X,Y
+
+IF X>Y
+	SUM=X+Y
+	KUB=SUM*SUM*SUM
+	OUTPUT KUB
+ELSE
+	SUM=X+Y
+	KV=SUM*SUM
+	OUTPUT KV
+ENDIF
+END
+
+
+--------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva X, dužine N, i cijeli broj P. Ukoliko je broj pozitivnih elemenata niza veći od P, štampati sumu svih elemenata niza. U suprotnom, štampati proizvod prvog i posljednjeg elementa niza.
+
+
+START
+X[100],N,P,BRP,SUM,PR:INTEGER
+
+
+INPUT N,P
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BRP=0
+I=1
+WHILE I<=N
+	IF X[I]>0
+		BRP=BRP+1
+	ENDIF
+	I=I+1
+ENDWHILE 
+
+SUM=0
+IF BRP>P
+	I=1
+	WHILE I<=N
+		SUM=SUM+X[I]
+		I=I+1
+	ENDWHILE
+	OUTPUT SUM
+	
+ELSE 
+	PR=X[1]*X[N]
+	OUTPUT PR
+ENDIF
+
+END
+
+----------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju dva realna broja X1 i X2, i u slučaju da su oba pozitivna, određuje se i štampa kvadrat većeg od njih. U suprotnom, štampa se zbir kvadrata broja X1 i kuba broja X2.
+
+
+START
+X1,X2,KV,KV1,KV2,SUM,KUB:FLOAT
+
+
+
+INPUT X1,X2
+
+IF X1>0 & X2>0
+	KV1=X1*X1
+	KV2=X2*X2
+	IF KV1>KV2
+		OUTPUT KV1
+	ELSE
+		OUTPUT KV2
+	ENDIF
+
+ELSE
+	KV=X1*X1
+	KUB=X2*X2*X2
+	SUM=KV+KUB
+	OUTPUT SUM
+ENDIF
+END
+
+
+-----------------------------
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva Z, dužine N, i dva cijela broja A i B. Svaki element niza koji je veći od proizvoda brojeva A i B umanjiti dva puta. Štampati novodobijeni niz i broj modifikovanih elemenata niza.
+
+
+START
+Z[100]:INTEGER
+N,A,B,PR,I,BR:INTEGER
+
+
+
+INPUT N,A,B
+
+I=1
+WHILE I<=N
+	INPUT Z[I]
+	I=I+1
+ENDWHILE 
+ 
+PR=A*B
+BR=0
+
+I=1
+WHILE I<=N
+	IF X[I]>PR
+		X[I]=X[I]/2
+		BR=BR+1
+	ENDIF
+	I=I+1
+	
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+OUTPUT BR
+END
+
+
+-----------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju tri cijela broja A, B i C, i određuje koliko je učitanih brojeva pozitivno. Ako su svi brojevi pozitivni, štampati kvadrat njihovog zbira. Ako nijedan učitan broj nije pozitivan, štampati poruku “Nema pozitivnih brojeva”. Ako prethodna dva uslova nisu zadovoljena, štampati broj 11.
+
+
+START
+A,B,C,BRP,KV,SUM:INTEGER
+
+
+INPUT A,B,C
+
+BRP=0
+
+IF A>0
+	BRP=BRP+1
+ENDIF
+
+IF B>0
+	BRP=BRP+1
+ENDIF
+
+IF C>0
+	BRP=BRP+1
+ENDIF
+
+IF BRP==0
+	OUTPUT "NEMA POZITIVNIH BROJEVA"
+ELSEIF BRP==3
+	SUM=A+B+C
+	KV=SUM*SUM
+	OUTPUT KV
+ELSE
+	OUTPUT 11
+ENDIF
+END
+
+------------------------
+
+Nacrtati algoritam i napisati pseudokod kojim se učitavaju dva realna broja X1 i X2, i u slučaju da su oba pozitivna, određuje se i štampa kvadrat većeg od njih. U suprotnom, štampa se zbir kvadrata broja X1 i kuba broja X2.
+
+
+START
+X1,X2,KV,SUM,KUB,MAX:FLOAT
+
+
+INPUT X1,X2
+
+IF X1>0 & X2>0
+	MAX=X1
+	IF X2>MAX
+		MAX=X2
+	ENDIF
+	KV=MAX*MAX
+	OUTPUT KV
+	
+ELSEIF
+	KV=X1*X1
+	KUB=X2*X2*X2
+	SUM=KV+KUB
+	OUTPUT SUM
+ENDIF
+END
+
+-----------------------
+
+
+Nacrtati algoritam i napisati pseudokod koji učitava niz cijelih brojeva Z, dužine N, i dva cijela broja A i B. Svaki element niza koji je veći od proizvoda brojeva A i B umanjiti dva puta. Štampati novodobijeni niz i broj modifikovanih elemenata niza.
+
+
+START
+Z[100],N,A,B,PR,BR,I:INTEGER
+
+
+INPUT N,A,B
+
+I=1
+WHILE I<=N
+	INPUT Z[I]
+	I=I+1
+ENDWHILE 
+
+
+BR=0
+PR=A*B
+I=1
+WHILE I<=N
+	IF Z[I]>PR
+		Z[I]=Z[I]/2
+		BR=BR+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT Z[I]
+	I=I+1
+ENDWHILE
+OUTPUT BR
+END
+
+-----------------
+
+
+Kreirati algoritam kojim se učitava string S i koji određuje da li taj string może predstavljati mejl adresu. Da bi string
+predstavljao mejl adresu, potrebno je da zadovoljava format aaaa@bb.ccc, pri čemu je aaaa string proizvoljne dužine sastavljen
+samo od slova, bb je string od dva slova, i ccc je string od tri slova.
+
+
+START
+S[100]:CHAR
+I,BR:INTEGER
+
+I=0
+WHILE S[I+1]!='\0'
+	I=I+1
+ENDWHILE
+
+BR=0
+
+IF I>5
+	IF S[I]>='A' & S[I]<='Z' & S[I]>='a' & S[I]<='z'
+
+		IF S[I-1]>='A' & S[I-1]<='Z' & S[I-1]>='a' & S[I-1]<='z'
+		
+			IF S[I-2]>='A' & S[I-2]<='Z' & S[I-2]>='a' & S[I-2]<='z'
+			
+				IF S[I-3]=='.'
+
+					IF S[I-4]>='A' & S[I-4]<='Z' & S[I-4]>='a' & S[I-4]<='z'	
+				
+						IF S[I-5]>='A' & S[I-5]<='Z' & S[I-5]>='a' & S[I-5]<='z'
+					
+							IF S[I]=='@'
+					
+								BR=1
+							ENDIF
+						ENDIF
+					ENDIF
+				ENDIF
+			ENDIF
+		ENDIF
+ENDIF
+ENDIF
+
+IF BR==1
+	OUTPUT "OVO JE EMAIL ADRESA"
+ELSE
+	OUTPUT "OVO NIJE EMAIL ADRESA"
+ENDIF
+END
+
+
+
+--------------------
+
+Kreirati algoritam ili napisati pseudokod kojim se učitava niz cijelih brojeva X, dužine N. Iz datog niza formirati i
+štampati podniz elemenata čija je cifra desetica paran broj. Cifru 0 takođe smatrati parnim brojem.
+
+Primjer: Traženi podniz za niz X=[121, 35, 4, 246, 256, 101] je [121, 246, 101], jer brojevi 121, 246 i 101 imaju parnu cifru
+desetica.
+
+
+
+START
+X[100],N,Y[100],I,J,M,P:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	
+	M=X[I]
+	M=M/10
+	P=P-(P/10)*10
+	IF P==(P/2)*2
+		J=J+1
+		Y[J]=X[I]
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=J
+	OUTPUT Y[I]
+	I=I+1
+ENDWHILE
+END
+
+----------------------
+
+Kreirati algoritam ili napisati pseudokod kojim se učitava niz cijelih brojeva X, dužine N. Odštampati dužinu
+najdužeg podniza rastućih elemenata niza X.
+
+Primjer: Za niz X=[12, 23, 5, 46, 47, 31] algoritam treba da odštampa broj 3, jer je najduži podniz rastućih elementa [5, 46, 47].
+
+
+
+START
+X[100],N,I,J,M,P:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	BR=1
+	WHILE M>9 & BR==1
+		P=M-(M/10)*10
+		M=M/10
+		IF M>9
+			IF M-(M/10)*10 < P
+				BR=1
+			ELSE
+				BR=0
+			ENDIF
+		ELSE
+			BR=1
+		ENDIF	
+	ENDWHILE
+	
+	IF BR==1
+		J=J+1
+		I=I+1
+	ELSE
+		I=I+1
+	ENDIF
+	
+ENDWHILE
+OUTPUT J
+END
+
+
+----------------------
+
+Kreirati algoritam kojim se učitava string S. Algoritam treba da na kraj stringa S nadoveže sve karaktere tog stringa koji predstavljaju cifre.
+
+
+
+START
+S[100],CIF[100]:CHAR
+I,J:INTEGER
+
+
+INPUT S
+
+J=0
+I=0
+WHILE S[I+1]!='\0'
+	I=I+1
+	IF S[I]>='0' & S[I]<='9'
+		J=J+1
+		CIF[J]=S[I]
+	ENDIF
+ENDWHILE 
+
+CIF[J+1]='\0'
+
+
+J=0
+WHILE CIF[J+1]!='\0'
+	I=I+1
+	J=J+1
+	S[I]=CIF[J]
+	
+ENDWHILE
+
+S[I+1]='\0'
+
+OUTPUT S
+END
+
+---------------------
+
+Kreirati algoritam ili napisati pseudokod kojim se učitava niz cijelih brojeva X, dužine N. Pronaći koliko elemenata toga niza ima cifre poređane u rastući redosljed.
+
+Primjer: Za niz X=[121, 35, 4, 246, 266, 101], algoritam štampa broj 3, jer elementi [35, 4, 246] imaju cifre poređane u rastući
+redosljed.
+
+
+
+START
+X[100]N,I,M,P:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	BR=1
+		
+	WHILE M>9 & BR==1
+	
+		P=M-(M/10)*10
+		M=M/10
+		IF M>9
+			IF M-(M/10)*10 < P	
+				BR=1
+			ELSE
+				BR=0
+			ENDIF
+	
+		ELSE 
+			BR=1
+		ENDIF
+	ENDWHILE
+
+	
+	
+	IF BR==1
+		J=J+1
+	ENDIF
+	I=I+1
+ENDWHILE 
+
+OUTPUT J
+END
+
+
+----------------------
+
+
+Kreirati algoritam kojim se učitava string S. Agoritam treba iz stringa S eliminiše sve karaktere koji nijesu mala slova.
+
+Primjer: Za string S=’Marko&Andrej’ algoritam treba da izmijeni string tako da on postane S=’arkondrej’
+
+
+
+START
+S[100]:CHAR
+I,J:INTEGER
+
+
+INPUT S
+
+
+J=1
+I=1
+WHILE S[I]!='\0'
+	IF S[I]<'a' & S[I]>'z'
+		I=I+1
+	ELSE
+		S[J]=S[I]
+		J=J+1
+		I=I+1
+	ENDIF
+ENDWHILE 
+
+OUTPUT S
+END
+
+
+-------------------------
+
+
+Kreirati algoritam kojim se učitava matrica A i koja preslaže matricu u niz X tako da se prvo smjeste prve
+kolone, zatim druge kolone itd. do poslednje kolone matrice. Odštampati dobijeni niz.
+
+
+START
+A[100,100]:INTEGER
+X[1000],I,J,Z,K,R:INTEGER
+
+
+INPUT K,R
+
+I=1
+WHILE I<=K
+	J=1
+	WHILE J<=R
+		INPUT A[I,J]
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+
+Z=0
+J=1
+WHILE J<=R
+	I=1
+	WHILE I<=K
+		Z=Z+1
+		X[Z]=A[I,J]
+		I=I+1
+	ENDWHILE
+	J=J+1
+ENDWHILE
+
+
+I=1
+WHILE I<=Z
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+
+----------------------
+
+Kreirati algoritam kojim se učitavaju stringovi S1 i S2 i koji string S2 nadovezuje na kraj stringa S1. Na izlazu
+štampati string S1.
+
+
+START
+S1[100],S2[100]:CHAR
+I,J:INTEGER
+
+INPUT S1,S2
+
+I=0
+WHILE S1[I+1]!='\0'
+	I=I+1
+ENDWHILE
+
+J=0
+WHILE S2[J+1]!='\0'
+	 J=J+1
+	 I=I+1
+	 S1[I]=S2[J]
+	
+ENDWHILE 
+
+S1[I+1]='\0'
+
+OUTPUT S1
+END
+
+---------------
+
+Kreirati algoritam kojim se učitava string S i koji provjerava da li dati string može predstavljati broj mobilnog
+telefona. String predstavlja broj mobilnog telefona ako ima tačno 9 karaktera, od čega su prva tri karaktera
+067, 068 ili 069 dok su preostalih 6 karaktera proizvoljni.
+
+
+START 
+S[100]:CHAR
+I,BR,Z:INTEGER
+
+
+INPUT S
+
+BR=0
+Z=0
+
+IF S[1]=='0' & S[2]=='6' & (S[3]=='7' | S[3]=='8' | S[3]=='9')
+	Z=1
+ENDIF
+
+ZO=1
+I=3
+WHILE S[I+1]!='\0' & ZO=1
+	I=I+1
+	IF S[I]=>'0' & S[I]<='9'
+		BR=1
+		ZO=0
+	ELSE
+		BR=0
+	ENDIF
+ENDWHILE
+
+IF BR==1 & I==9 & Z==1
+	OUTPUT "OVO JE BROJ TELEFONA"
+ELSE 
+	OUTPUT "OVO NIJE BROJ TELEFONA"
+ENDIF
+END
+
+
+------------------------
+	
+
+Kreirati algoritam kojim se unosi niz X od maksimalno 20 cijelih brojeva i koji kreira niz Y na način što se iz
+niza X eliminišu ponavljanja elemenata. Na izlazu štampati elemente niz Y. 
+
+Primjer: X =[1, 2, 3, 2, 7, 3, 9, 8, 7, 9] daje Y=[1, 2, 3, 7, 8, 9].
+
+
+
+
+START
+X[20],Y[20],I,J,N,IND,M:INTEGER
+
+	
+INPUT N
+
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+M=0
+I=1
+WHILE I<=N
+	J=I+1
+	IND=1
+	WHILE J<N
+		IF X[J]==X[I]
+			IND=0
+		ENDIF	
+		J=J+1
+		
+	ENDWHILE	
+	IF IND==1
+		M=M+1
+		Y[M]=X[I]
+	ENDIF
+	I=I+1
+ENDWHILE
+
+
+I=1
+WHILE I<=M
+	OUTPUT Y[I]
+	I=I+1
+ENDWHILE
+END
+
+
+
+-------------------
+
+
+Kreirati algoritam koji za uneseni cijeli broj N sumira njegove cifre i zatim provjerava da li je dobijena suma
+prost broj. Na izlazu štampati odgovarajuću poruku.
+
+
+START
+N,M,P,SUM,K:INTEGER
+
+
+INPUT N
+
+
+SUM=0
+M=N
+WHILE M>9
+	P=M-(M/10)*10
+	SUM=SUM+P
+	M=M/10
+ENDWHILE
+
+BR=1
+K=2
+WHILE K<SUM  & BR==1
+	IF SUM!=(SUM/K)*K
+		K=K+1
+		BR=1
+	ELSE
+		BR=0
+	ENDIF
+ENDWHILE
+
+IF BR==1
+	OUTPUT "SUMA JE PROST BROJ"
+ELSE
+	OUTPUT "SUMA NIJE PROST BROJ"
+ENDIF
+END
+
+
+---------------------
+
+
+Kreirati algoritam kojim se unosi niz X od maksimalno 20 realnih brojeva i određuju dva maksimalna elementa niza X.
+Na izlazu štampati dobijene maksimume.
+
+
+
+START
+X[20],MAX1,MAX2:FLOAT
+I,N:INTEGER
+
+
+INPUT N
+
+I=0
+WHILE I<N
+	I=I+1
+	INPUT X[I]
+ENDWHILE
+
+
+IF I<3
+	OUTPUT "NEMA DOVOLJNO ELEMENATA DA ODREDIM DVA MAKSIMALNA ELEMENTA NIZA"
+ELSE
+	MAX1=X[1]
+	MAX2=X[2]
+
+	
+	IF X[2]>MAX1
+		MAX1=X[2]
+		MAX2=X[1]
+	ENDIF
+ENDIF
+
+I=3
+
+WHILE I<=N
+	IF X[I]>MAX1
+		MAX2=MAX1
+		MAX1=X[I]
+	ENDIF
+	I=I+1
+ENDWHILE
+
+
+OUTPUT MAX1,MAX2
+END
+
+
+-----------------------
+
+
+Kreirati algoritam kojim se učitava matrica A dimenzija NxN i koji formira novu matricu B istih dimenzija. Elementi
+glavne dijagonale matrice B jednaki su elementima glavne dijagonale matrice A, dok su drugi elementi matrice B
+jednaki 0. Na izlazu štampati matricu B.
+
+
+
+START
+A[100,100],B[100,100]:INTEGER
+K,R,I,J,N:INTEGER
+
+
+INPUT N
+
+K=N
+R=N
+
+
+I=1
+WHILE I<=K
+	J=1
+	WHILE J<=R
+		INPUT A[I,J]
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=K
+	J=1
+	WHILE J<=R
+		IF I==J
+			B[I,J]=A[I,J]
+		ELSE
+			B[I,J]=0
+		ENDIF
+		J=J+1
+		
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+
+I=1
+WHILE I<=K
+	J=1
+	WHILE J<=R
+		OUTPUT B[I,J]
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+END
+
+
+----------------------
+
+Zadatak 6, PP priprema.pdf
+
+
+Kreirati algoritam koji izračunava približnu vrijednost (pi) koristeći sledeći razvoj:
+
+PI = 4-(4/3)+(4/5)-(4/7)+(4/9)-(4/11)...
+
+Sumiranje prekinuti kada apsolutna vrijednost opšteg člana sume postane manja od 10 (na -4) 
+
+
+
+START
+PI,Z:FLOAT
+U:INTEGER
+
+
+PI=4
+U=3
+Z=4
+
+IF Z>0.0001
+	Z=(4/U + 4/(U+2))
+	PI=PI-Z
+	U=U+2
+	
+ENDIF
+
+OUTPUT PI
+END
+
+

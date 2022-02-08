@@ -1,0 +1,4008 @@
+
+Značenje oznaka 
+
+!=   - nije jednako
+&   - AND  (i, logičko)
+|   - OR (ili, logičko)
+=> ili >=  - veće ili jednako od 
+<= ili =<    - manje ili jednako od 
+<     - manje od 
+>     - veće od 
+=     - presipanje u promenjivu
+==    - je jednako 
+/*  */ ili //  - su komentari, objašnjenja dela algoritma
+
+
+
+
+---------------------------------------------
+
+
+Napisati funkciju, kojoj se prosleđuje niz cijelih brojeva X, njegova dužina N i cio broj R. Funkcija treba da vrati broj elemenata niza X djeljivih brojem R.
+
+
+FUN(X[]:INTEGER,N:INTEGER,R:INTEGER):INTEGER
+
+I,D:INTEGER
+
+D=0
+I=1
+WHILE I<=N
+	IF X[I]==(X[I]/2)*2
+		D=D+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+RETURN D
+
+
+----------------
+
+4. 
+a) Kreirati strukturu AUTO, koja za podatke ima stringove Marku i Model, od maksimalno 30 karaktera, cijeli broj God, i realni broj Cijena
+
+
+TYPE AUTO
+	MARKA[30]:CHAR
+	MODEL[30]:CHAR
+	GOD:INTEGER
+	CIJENA:FLOAT
+ENDTYPE
+
+
+b) Napisati funkciju koja za ulazni argument ima jednu strukturu tipa AUTO i koja vraća 1 ako je podatak Cijena pravilan i 0 u suprotnom. Podatak Cijena je pravilan ako zadovoljava 0<Cijena 
+
+
+FUN(A:AUTO):INTEGER
+
+IF A.CIJENA > 0
+	RETURN 1
+ELSEIF
+	RETURN 0
+ENDIF
+
+
+
+------------------
+
+Napisati algoritamsku funkciju koja kao argumente ima niz cijelih brojeva A i njegovu dužinu N. Funkcija treba da
+formira i odštampa novi niz B koji sadrži iste elemente kao niz A, pri čemu pozitivni elementi treba da se ponavljaju onoliko puta
+kolika je njihova vrijednost.
+
+Primjer:
+Za niz A=[4 -2 1 3] rezultujući niz bi bio B=[4 4 4 4 -2 1 3 3 3]
+
+
+
+FUN(A[]:INTEGER,N:INTEGER)
+
+B[100]:INTEGER
+I,M,P:INTEGER
+
+
+M=0
+I=1
+
+WHILE I<=N
+	IF A[I]==(A[I]/2)*2
+		
+		P=A[I]
+		
+		WHILE P>0
+			M=M+1
+			B[M]=A[I]
+			P=P-1
+		ENDWHILE
+		
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=M
+	OUTPUT B[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+
+
+
+-------------------------
+
+Dat je niz cijelih brojeva: 12, 23, 6, 18, 7, 15, 14
+
+Sortirati niz u rastući poredak metodom insertion sort. Prikazati izgled niza nakon svake promjene mjesta članova niza.
+
+
+12 23 6 18 7 15 14
+
+12 6 23 18 7 15 14
+
+6 12 23 18 7 15 14
+
+6 12 18 23 7 15 14
+
+6 12 18 7 23 15 14
+
+6 12 7 18 23 15 14
+
+6 7 12 18 23 15 14
+
+6 7 12 18 15 23 14
+
+6 7 12 15 18 23 14
+
+6 7 12 15 18 14 23
+
+6 7 12 15 14 18 23
+
+6 7 12 14 15 18 23
+
+
+------------------------------
+
+Dat je niz cijelih brojeva: 12, 23, 6, 18, 7, 15, 14
+
+Sortirati niz u rastući poredak metodom bubble sort. Prikazati izgled niza nakon svake promjene mjesta članova niza.
+
+
+12 23 6 18 7 15 14
+
+12 6 23 18 7 15 14
+
+12 6 18 23 7 15 14
+
+12 6 18 7 23 15 14
+
+12 6 18 7 15 23 14
+
+12 6 18 7 15 14 23
+
+6 12 18 7 15 14 23
+
+6 12 7 18 15 14 23
+
+6 12 7 15 18 14 23
+
+6 12 7 15 14 18 23
+
+6 7 12 15 14 18 23
+
+6 7 12 14 15 18 23
+
+
+
+------------------------------
+
+Dat je niz cijelih brojeva: 12, 23, 6, 18, 7, 15, 14
+
+Sortirati niz u rastući poredak metodom ponovljeni minimum. Prikazati izgled niza nakon svake promjene mjesta članova niza.
+
+12 23 6 18 7 15 14
+
+6 23 12 18 7 15 14
+
+6 12 23 18 7 15 14
+
+6 7 23 18 12 15 14
+
+6 7 18 23 12 15 14
+
+6 7 12 23 18 15 14
+
+6 7 12 18 23 15 14
+
+6 7 12 15 23 18 14
+
+6 7 12 14 23 18 15
+
+6 7 12 14 18 23 15
+
+6 7 12 14 15 23 18
+
+6 7 12 14 15 18 23 
+
+
+
+
+
+
+------------------------------
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum za sortiranje koristi broj parnih cifara u svakom elementu niza (elementi treba da budu poredjani po broju parnih cifara koje sadrže u sebi). Za sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima.
+
+
+(sa ponovljenim minimumom (maksimumom))
+
+START
+X[100],Y[100]:INTEGER
+N,I,J,BRP,M,P,Z,POM,POM1:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+Z=0
+I=1
+WHILE I<=N
+	M=X[I]
+	BRP=0
+
+	WHILE M>9
+		P=M-(M/10)*10
+		IF P=(P/2)*2
+			BRP=BRP+1
+		ENDIF
+		M=M/10
+	ENDWHILE
+	Z=Z+1
+	Y[Z]=BRP
+	I=I+1
+	
+
+	
+ENDWHILE
+
+
+I=0
+WHILE I<N-1
+	I=I+1
+	J=I+1
+	
+	WHILE J<=N
+		IF Y[I]>Y[J]
+			POM=Y[J]
+			POM1=X[J]
+			Z[J]=Y[I]
+			X[J]=X[I]
+			Y[I]=POM
+			X[I]=POM1
+			
+		ENDIF
+		J=J+1
+	ENDWHILE
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+---------------------
+Kreirati algoritam kojim se unosi niz cijelih brojeva X dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum za sortiranje koristi broj parnih cifara u svakom elementu niza (elementi treba da budu poredjani po broju parnih cifara koje sadrže u sebi). Za sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima.
+
+
+(sa insertion sort)
+
+
+START
+X[100],Y[100]:INTEGER
+N,I,J,BRP,M,P,Z,POM,POM1:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+Z=0
+I=1
+WHILE I<=N
+	M=X[I]
+	BRP=0
+
+	WHILE M>9
+		P=M-(M/10)*10
+		IF P=(P/2)*2
+			BRP=BRP+1
+		ENDIF
+		M=M/10
+	ENDWHILE
+	Z=Z+1
+	Y[Z]=BRP
+	I=I+1
+	
+
+	
+ENDWHILE
+
+I=2
+WHILE I<=N
+	J=I
+	WHILE J>1 & Y[J]<Y[J-1]
+		POM=Y[J]
+		POM1=X[J]
+		Y[J]=Y[J-1]
+		X[J]=X[J-1]
+		Y[J-1]=POM
+		X[J-1]=POM1
+		
+		J=J-1
+	ENDWHILE
+	
+	I=I+1
+	
+ENDWHILE
+
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+		
+
+
+---------------------
+Kreirati algoritam kojim se unosi niz cijelih brojeva X dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum za sortiranje koristi broj parnih cifara u svakom elementu niza (elementi treba da budu poredjani po broju parnih cifara koje sadrže u sebi). Za sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima.
+
+
+(sa buuble sort)
+
+
+START
+X[100],Y[100]:INTEGER
+N,I,J,BRP,M,P,Z,POM,POM1,IND:INTEGER
+
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+Z=0
+I=1
+WHILE I<=N
+	M=X[I]
+	BRP=0
+
+	WHILE M>9
+		P=M-(M/10)*10
+		IF P=(P/2)*2
+			BRP=BRP+1
+		ENDIF
+		M=M/10
+	ENDWHILE
+	Z=Z+1
+	Y[Z]=BRP
+	I=I+1
+	
+
+	
+ENDWHILE
+
+I=1
+IND=1
+
+WHILE I<N & IND==1
+	IND=0
+	J=1
+	WHILE J<=N-I
+		IF Y[J]>Y[J+1]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[J+1]
+			X[J]=X[J+1]
+			Y[J+1]=POM
+			X[J+1]=POM1
+			
+			IND=1
+			
+		ENDIF
+		
+		J=J+1
+		
+	ENDWHILE
+	
+	I=I+1
+	
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+
+
+------------------------------------
+
+
+Kreirati strukturu Test, koja kao podatke članove ima niz cijelih brojeva X i njegovu dužinu N. Kreirati funkciju koja za ulazni
+argument ima dvije strukture tipa Test i koja kao rezultat vraća onu strukturu čiji je maksimalni elemenat niza veći.
+
+TYPE TEST
+	X[100]:INTEGER
+	N:INTEGER
+ENDTYPE
+
+
+
+FUN(A:TEST,B:TEST):INTEGER
+
+MAX1,MAX2,Z,U,I,J:INTEGER
+
+
+MAX1=A.X[1]
+MAX2=B.X[1]
+
+U=A.N
+Z=B.N
+
+
+I=2
+WHILE I<=U
+	IF A.X[I]>MAX1
+		MAX1=A.X[I]
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=2
+WHILE I<=Z
+	IF B.X[I] > MAX2
+		MAX2=B.X[I]
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF MAX1>MAX2
+	RETURN 1
+ELSEIF MAX2>MAX1
+	RETURN 2
+ELSE
+	RETURN -1
+ENDIF
+
+
+-----------------------------
+
+Elementi liste su strukture koje sadrže po jedan string. Kreirati rekurzivnu funkciju koja kao argument ima glavu liste i koja
+određuje da li svi stringovi u listi počinju velikim slovom. Ako je to zadovoljeno vratiti broj 1, a u suprotnom vratiti broj 0.
+
+
+
+TYPE LISTA
+	S[100]:CHAR
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+
+
+FUN(GL:LISTA):INTEGER
+
+IF GL.NEXT != 0
+	IF GL.S[1]>='A' & GL.S[1]<='Z'
+		RETURN FUN(GL.NEXT)
+	
+	ELSE
+		RETURN 0
+	ENDIF
+	
+ELSE
+	IF GL.S[1]>='A' & GL.S[1]<='Z'
+		RETURN 1
+	
+	ELSE
+		RETURN 0
+	ENDIF
+ENDIF
+
+
+
+--------------------------------
+
+Kreirati klasu Računar koja ima sljedeće podatke članove: naziv računara (string), memoriju (realan broj), brzinu procesora (realan broj)
+i starost u godinama (cio broj). Klasa treba da ima bar po dva konstruktora, mutatora i inspektora. Realizovati ove funkcije članice, kao i funkciju
+članicu uporedjivanje koja kao argument ima niz računara i određuje i štampa najvećeg od njih. Od dva računara, veći je onaj čiji je količnik
+memorije i brzine procesora veći. Ako je taj količnik jednak, veći je onaj koji je stariji.
+
+
+
+CLASS RACUNAR
+
+	IME[100]:CHAR
+	MEM:FLOAT
+	CPU:FLOAT
+	AGE:INTEGER
+	
+	RACUNAR()
+	RACUNAR(M:FLOAT)
+	
+	CONST GET()
+	CONST GET2():INTEGER
+	
+	WRITE(S[]:CHAR,M:FLOAT,C:FLOAT,A:INTEGER)
+	WRITE2(M:INTEGER)
+	FRIEND UPOREDI(R[]:RACUNAR,N:INTEGER)
+
+ENDCLASS
+
+
+
+RACUNAR()			FROM RACUNAR
+
+IME[1]='\0'
+MEM=0
+CPU=0
+AGE=0
+
+
+
+
+RACUNAR(M:FLOAT) 			FROM RACUNAR
+	MEM=M
+	
+
+
+CONST GET() 			FROM RACUNAR
+
+I:INTEGER
+
+I=1
+WHILE IME[I]!='\0'
+	OUTPUT IME[I]
+	I=I+1
+ENDWHILE
+
+OUTPUT MEM, CPU
+OUTPUT AGE
+
+
+CONST GET2():INTEGER 			FROM RACUNAR
+	RETURN AGE
+	
+
+
+
+WRITE(S[]:CHAR,M:FLOAT,C:FLOAT,A:INTEGER) 			FROM RACUNAR
+
+I:INTEGER
+
+I=1
+WHILE S[I]!='\0'
+	IME[I]=S[I]
+	I=I+1
+ENDWHILE
+
+MEM=M
+CPU=C
+AGE=A
+
+
+
+
+
+WRITE2(M:INTEGER) 			FROM RACUNAR
+	MEM=M
+	
+	
+	
+	
+FRIEND UPOREDI(R[]:RACUNAR,N:INTEGER) 			FROM RACUNAR
+
+MAXK:FLOAT
+MAXP,MAXA:INTEGER
+
+
+MAXK=R[1].MEM/R[1].CPU
+MAXP=1
+MAXA=R[1].AGE
+
+
+I=2
+WHILE I<=N
+	IF (R[I].MEM/R[I].CPU)>MAXK
+		MAXK=R[I].MEM/R[I].CPU
+		MAXP=I
+		MAXA=R[I].AGE
+	
+	ELSEIF (R[I].MEM/R[I].CPU)==MAXK  & R[I].AGE>MAKA
+		MAXK=R[I].MEM/R[I].CPU
+		MAXP=I
+		MAXA=R[I].AGE
+	ENDIF
+ENDWHILE
+
+OUTPUT R[MAXP].IME
+OUTPUT R[MAXP].MEM
+OUTPUT R[MAXP].CPU
+OUTPUT R[MAXP].AGE
+
+RETURN
+
+
+
+----------------------------
+
+
+Napisati algoritamsku funkciju koja kao argumente
+ima niz cijelih brojeva A, njegovu dužinu N i cio broj K. Program
+treba da formira novi niz B tako što će nakon svakog elementa
+niza A dodati broj K. Na izlazu funkcije je potrebno štampati niz
+B.
+Primjer: Ako se unese niz A=[1 3 6 4 5] i broj K=7, rezultujući
+niz B treba da ima elemente Y=[1 7 3 7 6 7 4 7 5 7].
+
+
+
+FUN(A[]:INTEGER, N:INTEGER, K:INTEGER)
+
+J,I,B[100]:INTEGER
+
+
+J=0
+I=0
+
+WHILE I<N
+	I=I+1
+	J=J+1
+	B[J]=A[I]
+	J=J+1
+	B[J]=K
+ENDWHILE
+
+I=1
+WHILE I<=J
+	OUTPUT B[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+
+----------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum za sortiranje koristi suma parnih cifara u svakom elementu
+niza (elementi treba da budu poredjani po sumi parnih cifara koje sadrže
+u sebi). Za sortiranje iskoristiti jedan od algoritama koji su radjeni na
+predavanjima.
+
+
+(ponovljeni minimum)
+
+
+START
+X[100],Y[100]:INTEGER
+N,I,M,P,SUMP,J,POM,POM1:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUMP=0
+	
+	WHILE M>9
+		P=M-(M/10)*10
+		
+		
+		IF P==(P/2)*2
+			SUMP=SUMP+P
+		ENDIF
+		
+		M=M/10
+	ENDWHILE
+	J=J+1
+	Y[J]=SUMP
+	
+	I=I+1
+	
+ENDWHILE
+
+I=0
+WHILE I<N-1
+	I=I+1
+	J=I+1
+	
+	WHILE J<=N
+		IF Y[I]>Y[J]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[I]
+			X[J]=X[I]
+			Y[I]=POM
+			X[I]=POM1
+	
+		ENDIF
+		
+		J=J+1
+	ENDWHILE
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+
+
+--------------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum za sortiranje koristi suma parnih cifara u svakom elementu
+niza (elementi treba da budu poredjani po sumi parnih cifara koje sadrže
+u sebi). Za sortiranje iskoristiti jedan od algoritama koji su radjeni na
+predavanjima.
+
+
+(bubble sort)
+
+
+START
+X[100],Y[100]:INTEGER
+N,I,M,P,SUMP,J,POM,POM1,IND:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUMP=0
+	
+	WHILE M>9
+		P=M-(M/10)*10
+		
+		
+		IF P==(P/2)*2
+			SUMP=SUMP+P
+		ENDIF
+		
+		M=M/10
+	ENDWHILE
+	J=J+1
+	Y[J]=SUMP
+	
+	I=I+1
+	
+ENDWHILE
+
+I=1
+IND=1
+
+WHILE I<N & IND==1
+
+	IND=0
+	J=1
+	WHILE J<=N-I
+		IF Y[J]>Y[J+1]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[J+1]
+			X[J]=X[J+1]
+			Y[J+1]=POM
+			X[J+1]=POM1
+			
+			IND=1
+			
+		ENDIF
+		
+		J=J+1
+		
+	ENDWHILE
+
+	I=I+1
+	
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+
+
+--------------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum za sortiranje koristi suma parnih cifara u svakom elementu
+niza (elementi treba da budu poredjani po sumi parnih cifara koje sadrže
+u sebi). Za sortiranje iskoristiti jedan od algoritama koji su radjeni na
+predavanjima.
+
+
+(insertion sort)
+
+
+START
+X[100],Y[100]:INTEGER
+N,I,M,P,SUMP,J,POM,POM1,IND:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUMP=0
+	
+	WHILE M>9
+		P=M-(M/10)*10
+		
+		
+		IF P==(P/2)*2
+			SUMP=SUMP+P
+		ENDIF
+		
+		M=M/10
+	ENDWHILE
+	J=J+1
+	Y[J]=SUMP
+	
+	I=I+1
+	
+ENDWHILE
+
+I=2
+WHILE I<=N
+	J=I
+	WHILE J>1 & Y[J]<Y[J-1]
+		POM=Y[J]
+		POM1=X[J]
+		Y[J]=Y[J-1]
+		X[J]=X[J-1]
+		Y[J-1]=POM
+		X[J-1]=POM1
+		
+		J=J-1
+		
+	ENDWHILE
+	
+	I=I+1
+ENDWHILE
+
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+------------------------------------
+
+Kreirati strukturu Test, koja kao podatke članove ima niz cijelih brojeva X i njegovu dužinu N. Kreirati funkciju koja za ulazni
+argument ima dvije strukture tipa Test i koja kao rezultat vraća onu strukturu čiji je proizvod elemenata niza manji
+
+TYPE TEST
+		X[100]:INTEGER
+		N:INTEGER
+ENDTYPE
+
+
+FUN(A:TEST,B:TEST):INTEGER
+
+I,U,Z,PR1,PR2:INTEGER
+
+U=A.N
+Z=B.N
+
+PR1=1
+PR2=1
+
+I=1
+WHILE I<=U
+	PR1=PR1*A.X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=Z
+	PR2=PR2*B.X[I]
+	I=I+1
+ENDWHILE
+
+IF PR1<PR2
+	RETURN 1
+ELSEIF PR2<PR1
+	RETURN 2
+ELSE
+	RETURN 0
+ENDIF
+
+
+-------------------------------
+
+Elementi liste su strukture koje sadrže po jedan string. Kreirati rekurzivnu funkciju koja kao argument ima glavu liste i koja
+određuje da li svi stringovi u listi završavaju malim slovom. Ako je to zadovoljeno vratiti broj 1, a u suprotnom vratiti broj 0.
+
+
+TYPE LISTA
+	S[100]:CHAR
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+FUN(GL:LISTA):INTEGER
+
+I:INTEGER
+
+I=0
+
+IF GL.NEXT != 0
+	
+	WHILE GL.S[I+1]!='\0'
+		I=I+1
+	ENDWHILE
+	
+	IF GL.S[I]>='a' & GL.S[I]<='z'
+		RETURN FUN(GL.NEXT)
+	ELSE
+		RETURN 0
+	ENDIF
+	
+ELSE
+	WHILE GL.S[I+1]!='\0'
+		I=I+1
+	ENDWHILE
+	
+	IF GL.S[I]>='a' & GL.S[I]<='z'
+		RETURN 1
+	ELSE
+		RETURN 0
+	ENDIF
+ENDIF
+
+--------------------------------
+
+
+Kreirati klasu aplikacija koja ima sljedeće podatke članove: naziv aplikacije (string), memoriju (realan broj), broj preuzimanja (cijeli
+broj) i starost u godinama (cio broj). Klasa treba da ima bar po dva konstruktora, mutatora i inspektora. Realizovati ove funkcije članice, kao i
+funkciju članicu uporedjivanje koja kao argument ima niz aplikacija i određuje i štampa najmanju od njih. Od dvije aplikacije, manja je ona
+čiji je proizvod memorije i broja preuzimanja manji. Ako je taj proizvod jednak, manja je ona koja je mladja.
+
+
+CLASS APLIKACIJA
+	NAME[100]:CHAR
+	MEM:FLOAT
+	DOWNL:INTEGER
+	AGE:INTEGER
+	APLIKACIJA()
+	APLIKACIJA(A:INTEGER)
+	CONST READ()
+	CONST READ1():INTEGER
+	WRITE(S[]:CHAR,M:FLOAT,D:INTEGER,A:INTEGER)
+	SET_MEM(A:FLOAT)
+	FRIEND UPOREDI(A[]:APLIKACIJA,N:INTEGER)
+	
+ENDCLASS
+
+
+APLIKACIJA()		FROM APLIKACIJA
+NAME[1]='\0'
+MEM=0
+DOWNL=0
+AGE=0
+
+APLIKACIJA(A:INTEGER)		FROM APLIKACIJA
+	DOWNL=A
+	
+	
+CONST READ()		FROM APLIKACIJA
+OUTPUT NAME
+OUTPUT MEM
+OUTPUT DOWNL, AGE
+
+
+CONST READ1():INTEGER		FROM APLIKACIJA
+	RETURN AGE
+	
+	
+	
+WRITE(S[]:CHAR,M:FLOAT,D:INTEGER,A:INTEGER)		FROM APLIKACIJA
+
+I:INTEGER
+
+I=1
+WHILE S[I]!='\0'
+	IME[I]=S[I]
+	I=I+1
+ENDWHILE
+
+MEM=M
+DOWNL=D
+AGE=A
+
+
+
+SET_MEM(A:FLOAT)	FROM APLIKACIJA
+	AGE=A
+	
+	
+FRIEND UPOREDI(A[]:APLIKACIJA,N:INTEGER)	FROM APLIKACIJA
+
+PRMD:FLOAT
+AG,AGP:INTEGER
+
+PRMD=A[1].MEM*A[1].DOWNL
+AG=A[1].AGE
+AGP=1
+
+I=2
+WHILE I<=N
+
+	IF (A[I].MEM*A[I].DOWNL) < PRMD
+		PRMD=A[I].MEM*A[I].DOWNL
+		AG=A[I].AGE
+		AGP=I
+
+	ELSEIF IF (A[I].MEM*A[I].DOWNL) == PRMD & A[I].AGE < AG
+		PRMD=A[I].MEM*A[I].DOWNL
+		AG=A[I].AGE
+		AGP=I
+
+	ENDIF
+	
+	I=I+1
+ENDWHILE
+
+OUTPUT A[AGP].IME
+OUTPUT A[AGP].MEM
+OUTPUT A[AGP].DOWNL
+OUTPUT A[AGP].AGE
+
+RETURN
+
+---------------------------------------------
+
+
+Napisati algoritamsku funkciju koja kao argumente
+ima niz cijelih brojeva A, njegovu dužinu N i cio broj K. Program
+treba da formira novi niz T tako što će nakon svakog elementa
+niza A koji je djeljiv brojem K dodati broj K. Na izlazu funkcije je
+potrebno štampati niz T.
+Primjer: Ako se unese niz A=[1 3 6 4 9] i broj K=3, rezultujući
+niz B treba da ima elemente T=[1 3 3 6 3 4 9 3].
+
+
+FUN(A[]:INTEGER,N:INTEGER,K:INTEGER)
+
+I,J,T[100]:INTEGER
+
+I=0
+J=0
+	
+WHILE I<N
+		I=I+1
+		J=J+1
+		T[J]=A[I]
+		
+		IF A[I]==(A[I]/K)*K
+			J=J+1
+			T[J]=K
+		ENDIF
+		
+ENDWHILE
+
+I=1
+WHILE I<=J
+	OUTPUT T[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+
+
+----------------------------
+
+
+Dat je niz cijelih brojeva:
+22, 20, 8, 21, 15
+
+Sortirati niz u opadajući poredak metodom bubble sort. Prikazati izgled niza nakon svake promjene mjesta članova niza.
+
+
+22 20 8 21 15
+
+22 20 21 8 15
+
+22 21 20 8 15
+
+22 21 20 15 8
+
+
+----------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u opadajući redosljed pri čemu se kao
+kriterijum koristi suma cifara elementa a ne njegova vrijednost. Za
+sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima
+
+
+(ponovljeni minimum)
+
+
+START
+X[100],N,SUM,I,Y[100],J,M,P,POM,POM1:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUM=0
+	
+	WHILE M>9
+		P=M-(M/10)*10
+		SUM = SUM + P
+		M=M/10
+	ENDWHILE
+	
+	J=J+1
+	Y[J]=SUM
+	I=I+1
+ENDWHILE
+
+I=0
+WHILE I<N-1
+	I=I+1
+	J=I+1
+	WHILE J<=N
+		IF Y[I]<Y[J]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[I]
+			X[J]=X[I]
+			Y[I]=POM
+			X[I]=POM1
+			
+		ENDIF
+		J=J+1
+	ENDWHILE
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+	
+----------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u opadajući redosljed pri čemu se kao
+kriterijum koristi suma cifara elementa a ne njegova vrijednost. Za
+sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima
+
+
+(bubble sort)
+
+
+START
+X[100],N,SUM,I,Y[100],J,M,P,POM,POM1,IND:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUM=0
+	
+	WHILE M>9
+		P=M-(M/10)*10
+		SUM = SUM + P
+		M=M/10
+	ENDWHILE
+	
+	J=J+1
+	Y[J]=SUM
+	I=I+1
+ENDWHILE
+
+
+I=1
+IND=1	
+WHILE I<N IND==1
+	IND=0
+	J=1
+	WHILE J<N-I
+		IF Y[J]<Y[J+1]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[I]
+			X[J]=X[I]
+			Y[I]=POM
+			X[I]=POM1
+			
+			BR=1
+		ENDIF
+		
+		J=J+1
+	ENDWHILE
+	
+	I=I+1
+ENDHWILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+
+
+----------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u opadajući redosljed pri čemu se kao
+kriterijum koristi suma cifara elementa a ne njegova vrijednost. Za
+sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima
+
+
+(insertion sort)
+
+
+START
+X[100],N,SUM,I,Y[100],J,M,P,POM,POM1,IND:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUM=0
+	
+	WHILE M>9
+		P=M-(M/10)*10
+		SUM = SUM + P
+		M=M/10
+	ENDWHILE
+	
+	J=J+1
+	Y[J]=SUM
+	I=I+1
+ENDWHILE
+
+
+I=2
+WHILE I<=N
+	J=I
+	WHILE J>1 & Y[J]>Y[J-1]
+		POM=Y[J]
+		POM1=X[J]
+		Y[J]=Y[J-1]
+		X[J]=X[J-1]
+		Y[J-1]=POM
+		X[J-1]=POM1
+		
+		J=J-1
+		
+	ENDWHILE
+	
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+------------------------------
+
+Kreirati strukturu Test, koja kao podatke članove ima niz cijelih brojeva X i njegovu dužinu N. Kreirati funkciju koja za ulazni
+argument ima strukturu tipa Test i koja svaki element u nizu (podatku članu strukture Test) umanjuje za vrijednost elementa ispred sebe.
+Funkcija štampa elemente niza strukture koja je proslijeđena kao argument.
+
+
+TYPE TEST
+	X[100]:INTEGER
+	N:INTEGER
+ENDTYPE
+
+
+FUN(A:TEST)
+
+I,U:INTEGER
+
+U=A.N
+
+I=1
+WHILE I<U
+	A.X[I]=A.X[I]-A.X[I+1]
+	I=I+1
+ENDHWILE
+
+I=1
+WHILE I<=U
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+
+-----------------------
+
+
+Elementi liste su strukture koje sadrže po dva cijela broja p i q. Kreirati rekurzivnu funkciju koja kao argument ima glavu liste i
+koja određuje da li za sve elemente liste važi da je ili p ili q parno. Ako je to zadovoljeno vratiti broj 1, a u suprotnom vratiti broj 0.
+
+
+TYPE LISTA
+	P:INTEGER
+	Q:INTEGER
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+FUN(GL:LISTA)
+
+IF GL.NEXT != 0
+	IF Q==(Q/2)*2  | P==(P/2)*2
+		RETURN (GL.NEXT)
+	ELSE
+		RETURN 0
+	ENDIF
+	
+ELSE
+IF Q==(Q/2)*2  | P==(P/2)*2
+		RETURN 1
+	ELSE
+		RETURN 0
+	ENDIF
+ENDIF
+
+-----------------------
+
+Kreirati klasu brod koja ima sljedeće podatke članove: tip broda (string), broj članova posade (cio broj), zapreminu (realan broj) i starost
+u godinama (cio broj). Klasa treba da ima bar po dva konstruktora, mutatora i inspektora. Realizovati ove funkcije članice, kao i funkciju članicu
+uporedjivanje koja kao argument ima niz brodova i određuje i štampa najbolji od njih. Od dva broda, bolji je onaj čiji je odnos zapremine i
+broja članova posade manji.
+
+
+CLASS BROD 
+	TIP[100]:CHAR
+	BRP:INTEGER
+	ZAP:FLOAT
+	AGE:INTEGER
+	BROD()
+	BROD(A:INTEGER)
+	CONST READ()
+	CONST READ1():INTEGER
+	WRITE(S[]:CHAR,B:INTEGER,Z:FLOAT,A:INTEGER)
+	SET_ZAP(Z:FLOAT)
+	FRIEND UPOREDI(A[]:BROD,N:INTEGER)
+	
+ENDCLASS
+
+
+BROD () 		FROM BROD
+TIP[1]='\0'
+BRP=0
+ZAP=0
+AGE=0
+
+
+BROD(A:INTEGER)		FROM BROD
+AGE=A
+
+
+CONST READ()	FROM BROD
+OUTPUT TIP
+OUTPUT ZAP
+OUTPUT AGE, BRP
+
+
+CONST READ1():INTEGER
+RETURN AGE
+
+
+WRITE(S[]:CHAR,B:INTEGER,Z:FLOAT,A:INTEGER)		FROM BROD
+
+I:INTEGER
+
+I=1
+WHILE S[I]!='\0'
+	TIP[I]=S[I]
+	I=I+1
+ENDWHILE
+
+BRP=B
+ZAP=Z
+AGE=A
+
+
+SET_ZAP(Z:FLOAT)	FROM BROD
+ZAP=Z
+
+
+FRIEND UPOREDI(A[]:BROD,N:INTEGER)			FROM BROD
+
+I,ODN,ODP:INTEGER
+
+ODN=A[1].ZAP/A[1].BRP
+ODP=1
+
+I=2
+WHILE I<=N
+	IF  (A[I].ZAP/A[I].BRP) < ODN
+		ODN=A[I].ZAP/A[I].BRP
+		ODP=I
+
+	ENDIF
+	
+	I=I+1
+ENDWHILE
+
+OUTPUT A[ODP].TIP
+OUTPUT A[ODP].BRP
+OUTPUT A[ODP].ZAP
+OUTPUT A[ODP].AGE
+
+RETURN
+
+
+------------------------------
+
+Napisati algoritamsku funkciju koja kao argumente
+ima niz cijelih brojeva X, njegovu dužinu N i cio broj K. Program
+treba da formira niz Y koji se sastoji od onih elemenata niza X čiji
+je zbir cifara djeljiv brojem K.
+Primjer: Ako se unese niz X=[12 32 63 4 51] i broj K=3,
+rezultujući niz Y treba da ima elemente Y=[12 63 51]
+
+
+
+FUN(X[]:INTEGER,N:INTEGER,K:INTEGER)
+
+Y[100],,M,P,SUM,J,I:INTEGER
+
+J=0
+I=1
+WHILE I<=N
+	M=X[I]
+	SUM=0
+	WHILE M>9
+		P=M-(M/10)*10
+		SUM=SUM+P
+		
+		M=M/10
+	ENDWHILE
+	
+	IF SUM==(SUM/K)*K
+		J=J+1
+		Y[J]=X[I]
+	ENDIF
+	I=I+1
+	
+ENDWHILE
+
+
+I=1
+WHILE I<=J
+	OUTPUT Y[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+
+
+---------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum koristi cifra najveće težine a ne vrijednost elementa. Za
+sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima.
+
+(ponovljeni minimum)
+
+
+START
+X[100],,M,P,I,J,Y[100],N,POM,POM1:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	M=X[I]
+	WHILE M>9
+		P=M-(M/10)*10
+		M=M/10
+	ENDWHILE
+	
+	J=J+1
+	Y[J]=P
+	I=I+1
+ENDWHILE
+
+I=0
+WHILE I<N-1
+	I=I+1
+	J=I+1
+	WHILE J<=N
+		IF Y[I]>Y[J]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[I]
+			X[J]=X[I]
+			Y[I]=POM
+			X[I]=POM1
+			
+		ENDIF
+		J=J+1
+	ENDWHILE
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+
+---------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum koristi cifra najveće težine a ne vrijednost elementa. Za
+sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima.
+
+(bubble sort)
+
+
+START
+X[100],,M,P,I,J,Y[100],N,POM,POM1,IND:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	M=X[I]
+	WHILE M>9
+		P=M-(M/10)*10
+		M=M/10
+	ENDWHILE
+	
+	J=J+1
+	Y[J]=P
+	I=I+1
+ENDWHILE
+
+
+I=1
+IND=1
+
+WHILE I<N & IND==1
+	IND=0
+	J=1
+	WHILE J<=N-I
+		IF Y[J]>Y[J+1]
+			POM=Y[J]
+			POM1=X[J]
+			Y[J]=Y[J+1]
+			X[J]=X[J+1]
+			Y[J+1]=POM
+			X[J+1]=POM1
+			
+			IND=1
+		ENDIF
+		J=J+1
+		
+	ENDWHILE
+	
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+	
+
+---------------------------
+
+
+Kreirati algoritam kojim se unosi niz cijelih brojeva X
+dužine N. Niz je potrebno sortirati u rastući redosljed pri čemu se kao
+kriterijum koristi cifra najveće težine a ne vrijednost elementa. Za
+sortiranje iskoristiti jedan od algoritama koji su radjeni na predavanjima.
+
+(insertion sort)
+
+
+START
+X[100],,M,P,I,J,Y[100],N,POM,POM1:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=N
+	M=X[I]
+	WHILE M>9
+		P=M-(M/10)*10
+		M=M/10
+	ENDWHILE
+	
+	J=J+1
+	Y[J]=P
+	I=I+1
+ENDWHILE
+
+
+I=2
+WHILE I<=N
+	J=I
+	WHILE J>1 & Y[J]<Y[J-1]
+		POM=Y[J]
+		POM1=X[J]
+		Y[J]=Y[J-1]
+		X[J]=X[J-1]
+		Y[J-1]=POM
+		X[J-1]=POM1
+		
+		J=J-1
+		
+	ENDWHILE
+	
+	I=I+1
+	
+ENDWHILE
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+
+END
+	
+---------------------------
+
+Kreirati strukturu Test, koja kao podatke članove ima niz cijelih brojeva X i njegovu dužinu N. Kreirati funkciju koja za ulazni
+argument ima strukturu tipa Test i koja mijenja niz (podatak član strukture Test) tako da svaki element biva zamijenjen najvećim elementom
+prije njega. Funkcija štampa elemente niza strukture koja je proslijeđena kao argument.
+
+
+TYPE TEST
+	X[100]:INTEGER
+	N:INTEGER
+ENDTYPE
+
+
+FUN(&A:TEST)
+
+I,MAX,U:INTEGER
+
+MAX=A.X[1]
+
+U=A.N
+
+I=2
+WHILE I<=U
+	A.X[I]=MAX
+	IF A.X[I] > MAX
+		MAX=A.X[I]
+	ENDIF
+	
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=U
+	OUTPUT A.X[I]
+	I=I+1
+ENDWHILE
+
+RETURN
+
+---------------------------
+
+Elementi liste su strukture koje sadrže po dva cijela broja p i q. Kreirati rekurzivnu funkciju koja kao argument ima glavu liste i
+koja određuje da li su elementi strukture sortirani u rastući redosljed pri čemu se kao vrijednost elemente liste (strukture) koristi veći od brojeva p
+i q.
+
+
+
+TYPE LISTA
+	P:INTEGER
+	Q:INTEGER
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+FUN(GL:LISTA):INTEGER
+
+Z,Z1:INTEGER
+
+
+IF GL.NEXT.NEXT != 0
+	IF GL.P>GL.Q
+		Z=GL.P
+	ELSE
+		Z=GL.Q
+	ENDIF
+	
+	IF GL.NEXT.P>GL.NEXT.Q
+		Z1=GL.NEXT.P
+	ELSE
+		Z1=GL.NEXT.Q
+	ENDIF
+	
+	
+	IF Z < Z1
+		RETURN FUN(GL.NEXT)
+	ELSE
+		RETURN 0
+	ENDIF
+	
+ELSE
+	RETURN 1
+	
+ENDIF
+
+---------------------------
+
+
+Kreirati klasu podmornica koja ima sljedeće podatke članove: zamlja porijekla (string), broj torpeda (cio broj), maksimalna dubina
+(cijeli broj) i starost u godinama (cio broj). Klasa treba da ima bar po dva konstruktora, mutatora i inspektora. Realizovati ove funkcije članice, kao i
+funkciju članicu uporedjivanje koja kao argument ima niz podmornica i određuje i štampa najbolju od njih. Od dvije podmornice, bolja je ona
+koja može dublje da zaroni, a ukoliko im je taj podatak jednak, bolja je novija.
+
+
+CLASS PODMORNICA
+	ZEMLJ[100]:CHAR
+	TORP:INTEGER
+	DUB:INTEGER
+	AGE:INTEGER
+	PODMORNICA()
+	PODMORNICA(A:INTEGER)
+	CONST READ()
+	CONST GET_DUB():INTEGER
+	WRITE(Z[]:CHAR,T:INTEGER,D:INTEGER,A:INTEGER)
+	SET_TO(A:INTEGER)
+	FRIEND UPOREDI(D[]:PODMORNICA,N:INTEGER)
+	
+ENDCLASS
+
+
+
+
+PODMORNICA()		FROM PODMORNICA
+ZEMLJ[1]='\0'
+TORP=0
+DUB=0
+AGE=0
+
+
+PODMORNICA(A:INTEGER)		FROM PODMORNICA
+TORP=A
+
+
+CONST READ()		FROM PODMORNICA
+OUTPUT ZEMLJ
+OUTPUT TORP
+OUTPUT DUB
+OUTPUT AGE
+
+
+
+CONST GET_DUB():INTEGER			FROM PODMORNICA
+RETURN DUB
+
+
+WRITE(Z[]:CHAR,T:INTEGER,D:INTEGER,A:INTEGER)		FROM PODMORNICA
+
+I:INTEGER
+
+I=1
+WHILE Z[I]!='\0'
+	ZEMLJ[I]=Z[I]
+	I=I+1
+ENDWHILE
+
+TORP=T
+DUB=D
+AGE=A
+
+
+SET_TO(A:INTEGER) 		FROM PODMORNICA
+TORP=A
+
+
+FRIEND UPOREDI(D[]:PODMORNICA,N:INTEGER)		 		FROM PODMORNICA
+
+I,MAXD,MAXP,MAXA:INTEGER
+
+MAXD=D[1].DUB
+MAXP=1
+MAXA=D[1].AGE
+
+I=2
+WHILE I<=N 
+	IF D[I].DUB > MAXD	
+		MAXD=D[I].DUB
+		MAXP=I
+		MAXA=D[I].AGE
+		
+	ELSEIF D[I].DUB == MAXD & D[I]<MAXA
+		MAXD=D[I].DUB
+		MAXP=I
+		MAXA=D[I].AGE
+	ENDIF
+
+	I=I+1
+ENDWHILE
+
+OUTPUT D[MAXP].ZEMLJ
+OUTPUT D[MAXP].TORP
+OUTPUT D[MAXP].DUB
+OUTPUT D[MAXP].AGE
+
+
+RETURN
+
+---------------------------
+
+Napisati funkciju UKLONI, koja za argumente ima string S i karakter K, i koja formira novi string S1 tako što u njemu ukloni sve karaktere koji su isti kao karakter K. Napisati i glavni program koji testira kreiranu funkciju
+
+
+
+UKLONI(S[]:CHAR,K:CHAR,&S1[]:CHAR)
+
+I,J:INTEGER
+
+J=0
+I=1
+WHILE S[I]!='\0'
+	IF S[I]==K
+		I=I+1
+	ELSE
+		J=J+1
+		S1[J]=S[I]
+		I=I+1
+	ENDIF
+ENDWHILE
+
+S1[J+1]='\0'
+
+RETURN
+
+
+
+START 
+S[100],S1[100],K:CHAR
+
+INPUT S,K
+UKLONI(S,K,&S1)
+OUTPUT S1
+END
+
+
+----------------------
+4.
+
+a) Kreirati strukturu BROJEVI, koja za podatke ima dva realna broja X i Y, i dva cijela broja P i Q
+
+
+TYPE BROJEVI
+	X:FLOAT
+	Y:FLOAT
+	P:INTEGER
+	Q:INTEGER
+ENDTYPE
+
+
+b) Napisati funkciju koja za ulazni argument ima jednu strukturu tipa BROJEVI i koja vraća proizvod brojeva X i Y te strukture ako su P i Q različiti od nule i vrijednost X^2-3Y^2 u suprotnom
+
+
+FUN(A:BROJEVI):FLOAT
+	PR:FLOAT
+	
+	IF A.P!=0 & A.Q!=0
+		PR=A.X*A.Y
+		RETURN PR
+	ELSE
+		PR=(A.X*A.X)-(3*(A.Y*A.Y))
+		RETURN PR
+	ENDIF
+	
+	
+	
+	
+e) Napisati funkciju AZURIRAJ koja kao argument ima jednu strukturu tipa BROJEVI i koja mijenja tu strukturu tako da manji od dva realna broja koji su članovi strukture umanji za 1.
+
+
+
+AZURIRAJ(&A:BROJEVI)
+
+IF A.Y < A.X
+	A.Y=A.Y-1
+ELSE
+	A.X=A.X-1
+ENDIF
+
+
+
+
+c) Kreirati klasu FAKULTET koja ima podatke članove IME (string - ime fakulteta), ZAPOSLENI (cijeli broj - broj zaposlenih). STUDENTI_GOD(niz od 4 cijela broja godina, I-ti element predstavlja broj studenata na I-toj godini) i STUDENTI_SMJER (niz od 3 cijela broja gde I-ti element predstavlja broj studenata na I-tom smjeru). Realizovati ove funkcije članice, i funkciju članicu UKUPNO koja određuje i štampa koliko ima ukupno studenata u svim godinama i koliko studenata po godinama
+
+
+CLASS FAKULTET
+	IME[100]:CHAR
+	ZAPOSLENI:INTEGER
+	STUDENTI_GOD[4]:INTEGER
+	STUDENTI_SMJER[3]:INTEGER
+	FAKULTET()
+	UKUPNO():INTEGER
+	PO_SMJERU():INTEGER
+	
+ENDCLASS
+
+
+FAKULTET()		FROM FAKULTET
+I:INTEGER
+
+IME[1]='\0'
+ZAPOSLENI=0
+
+I=1
+WHILE I<=4
+	STUDENTI_GOD[I]=0
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=3
+	STUDENTI_SMJER[I]=0
+	I=I+1
+ENDWHILE
+
+
+
+
+UKUPNO():INTEGER		FROM FAKULTET
+I,UK:INTEGER
+
+UK=0
+I=1
+WHILE I<=4
+	OUTPUT STUDENTI_GOD[I]
+	UK=UK+STUDENTI_GOD[I]
+	I=I+1
+ENDWHILE
+
+RETURN UK
+
+
+// koliko ima studenata po svakom smjeru, i ukupno koliko ima studenata po svakom smjeru
+
+PO_SMJERU():INTEGER				FROM FAKULTET
+
+I,J,UKW,UK:INTEGER
+
+I=1
+UKW=0
+
+WHILE I<=3
+	J=1
+	UK=0
+	
+	WHILE J<=4
+		UK=UK++STUDENTI_GOD[J]
+		UKW=UKW+STUDENTI_GOD[J]
+		J=J+1
+	ENDWHILE
+	
+	OUTPUT UK
+
+ENDWHILE
+
+RETURN UKW
+
+
+-----------------------
+
+Napisati funkciju VecaPolovina koja za argument ima niz cijelih brojeva X, dužine N, i koja treba da odredi koja polovina niza ima veću sumu brojeva. Kao rezultat funkcije potrebno je vratiti veću sumu. Ukoliko je broj članova neparan, središnji elemenat ignorisati. Napisati i glavni dio algoritma koji poziva kreiranu funkciju i štampa njen rezultat
+
+
+
+VECAPOLOVINA(X[]:INTEGER,N:INTEGER):INTEGER
+
+I,J,SUML,SUMR,C:INTEGER
+
+SUML=0
+SUMR=0
+
+
+IF N!=(N/2)*2
+	C=N/2
+	
+
+	I=1
+	WHILE I<=C
+		SUML=SUML+X[I]
+		I=I+1
+		
+	ENDWHILE
+	
+	J=C+2
+	WHILE J<=N
+		SUMR=SUMR+X[J]
+		J=J+1
+	
+	ENDWHILE
+
+ELSE
+	C=N/2
+	
+	I=1
+	WHILE I<=C
+		SUML=SUML+X[I]
+		I=I+1
+	ENDWHILE
+	
+	J=C+1
+	WHILE J<=N
+		SUMR=SUMR+X[J]
+		J=J+1
+	
+	ENDWHILE
+
+ENDIF
+
+IF SUML>SUMR
+	RETURN SUML
+ELSE
+	RETURN SUMR
+ENDIF
+
+
+
+
+
+START 
+X[100],I,N,V:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+V=VECAPOLOVINA(X,N)
+OUTPUT V
+END
+
+
+
+
+
+-----------------------
+
+
+Napisati funkciju Parni, koja za argument ima cijeli broj P, i koja formira i štampa string S koji se sastoji samo od karaktera koji predstavljaju parne cifre broja P. Redosljed karaktera u stringu S se mora poklapati sa redosljedom cifara u broju P. Napisati i glavni dio algoritma koji poziva kreiranu funkciju
+
+
+
+PARNI(P:INTEGER,&S[]:CHAR)
+
+M,I,J,P:INTEGER
+S1[100]:CHAR
+
+M=P
+
+WHILE M>9
+	P=M-(M/10)*10
+	IF P==(P/2)*2
+		J=J+1
+		S1[J]=P
+	ENDIF
+	M=M/10
+ENDWHILE
+
+S1[J+1]='\0'
+
+I=1
+WHILE S1[J]!=1
+	S[I]=S1[J]
+	J=J-1
+	I=I+1
+	
+ENDWHILE
+S[I]='\0'
+
+RETURN
+
+
+
+
+
+
+START
+S[100]:CHAR
+P:INTEGER
+
+INPUT P
+
+PARNI(P,&S)
+OUTPUT S
+END
+
+
+-----------------------
+
+4.
+
+a) Kreirati struturu TEST, koja za podatke ima dva cijela broja X i Y, i string A
+
+TYPE TEST
+	X:INTEGER
+	Y:INTEGER
+	A[100]:INTEGER
+ENDTYPE
+
+
+b) Napisati funkciju VEĆI koja za ulazni argument ima dvije strukture tipa TEST i koja kao rezultat vraća prvo slovo stringa one strukture koja ima veći zbir cijelih brojeva
+
+
+VECI(A:TEST,B:TEST):CHAR
+	ZBA,ZBB:INTEGER
+	
+	ZBA=A.X+A.Y
+	ZBB=B.X+B.Y
+	
+	IF ZBA > ZBB
+		RETURN A.A[1]
+	ELSE
+		RETURN B.A[1]
+	ENDIF
+	
+	
+	
+-------------------
+
+Funkciji se prosleđuje niz cijelih brojeva Y, dužine K.
+Funkcija treba da pronađe poziciju poslednje pojave dva uzastopna neparna broja  u tom nizu.
+
+Primjer: Za niz Y=[1, 2, 3, 3, 2, 4, 5, 4, 6, 1, 7, 8], funkcija treba da vrati cijeli broj 10
+
+
+
+FUN(Y[]:INTEGER,K:INTEGER):INTEGER
+
+I,J:INTEGER
+
+MAXP=1
+
+I=1
+WHILE I<K
+	IF Y[I]!=(Y[I]/2)*2
+		J=I+1
+		WHILE J<=K
+			IF Y[J]!=(Y[J]/2)*2
+				
+				IF J>MAXP
+					MAXP=J
+				ENDIF
+				
+				
+			ENDIF
+			
+			J=J+1
+			
+		ENDWHILE
+		
+		
+	ENDIF
+	
+	I=I+1
+ENDWHILE
+
+RETURN MAXP
+
+
+
+-------------------------
+
+4.
+
+a) Jedan element liste čine dva cijela broja C i D. Kreirati funkcijU koja kao argument ima pokazivač na glavu liste i koja kao rezultat vraća proizvod svih D upisanih u čvorovima liste koji imaju osobinu da su im oba podatka člana parni brojevi.
+
+
+
+TYPE LISTA
+	C:INTEGER
+	D:INTEGER
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+FUN(GL:LISTA):INTEGER
+
+PR:INTEGER
+
+IF GL.C==(GL.C/2)*2  & GL.D==(GL.D/2)*2
+	RETURN GL.D * FUN(GL.NEXT)
+ELSEIF GL.NEXT != 0
+	RETURN GL.D
+ENDIF
+
+
+
+----------------------------
+
+Napisati funkciju VECE_ARS, kojoj prosleđuje niz realnih brojeva X, od N elemenata, i realan broj C, i koja vraća 1 ukoliko je broj C veći od aritmetičke sredine niza i 0 u suprotnom
+
+
+
+VECE_ARS(X[]:FLOAT,N:INTEGER,C:FLOAT):INTEGER
+
+ARS,,SUM,I:INTEGER
+
+
+I=0
+WHILE I<=N
+	I=I+1
+	SUM=SUM+X[I]
+ENDWHILE
+
+
+ARS=SUM/I
+
+IF C>ARS
+	RETURN 1
+ELSE
+	RETURN 0
+ENDIF
+
+----------------------------
+
+Kreirati klasu STUDENT koja ima podatke članove IME (string - ime studenata)GOD (cijeli broj - godina upisa studija), SMJER (string), PROSJEK (realan broj) i BRPI (cijeli broj - broj polozenih ispita). Klasa treba da ima bar po dva konstruktora, mutatora i inspektora. Realizovati ove funkcije članice, kao i funkciju članicu koja za argument ima cijeli broj koji predstavlja ocjenu na ispitu i koja ažurira prosjek studenta i broj položenih ispita u skladu sa tom ocjenom
+
+
+
+CLASS STUDENT
+	IME[100]:CHAR
+	GOD:INTEGER
+	SMJER[100]:CHAR
+	PROSJEK:FLOAT
+	BRPI:INTEGER
+	
+	STUDENT()
+	STUDENT(A:INTEGER)
+	CONST READ()
+	CONST GET_PROSJ():FLOAT
+	WRITE(I[]:CHAR,G:INTEGER,S[]:CHAR,P:FLOAT,B:INTEGER)
+	WRITE1(B:INTEGER)
+	
+	AZURIRAJ(O:INTEGER)
+	
+ENDCLASS
+
+
+/*
+
+//ažuriranje srednje vrednosti, (dodavanje vrednosti)
+average = oldaverage + ((value - oldaverage) / nValues)
+
+//oduzimanje vrednosti
+average = (oldaverage * nValues - value) / (nValues - 1)
+
+
+*/
+
+
+AZURIRAJ(O:INTEGER)			FROM STUDENT
+
+
+BRPI=BRPI+1
+
+PROSJEK= PROSJEK + ((O-PROSJEK)/BRPI)
+
+RETURN
+
+
+
+
+-----------------------------
+
+
+Napisati funkciju kojoj se prosleđuje niz cijelih brojeva X, njegova dužina N i cio broj R. Funkcija treba da vrati broj elemenata niza X deljivim brojem R
+
+
+FUN(X[]:INTEGER,N:INTEGER,R:INTEGER):INTEGER
+
+I,J:INTEGER
+
+I=0
+J=0
+
+WHILE I<N
+	I=I+1
+	IF X[I]==(X[I]/R)*R
+		J=J+1
+	ENDIF
+ENDWHILE
+
+RETURN J
+
+-----------------------------
+
+
+Napisati funkciju koja kao argumente ima niz cijelih brojeva X i njegovu dužinu N. U datom nizu potrebno je pronaći najveći element koji je jednak sumi elemenata prije sebe. U glavnom dijelu algoritma unijeti niz, pozvati funkciju i odštampati dobijeni element ili odgovarajuće obaveštenje ako takvog elementa nema
+
+
+
+FUN(X[]:INTEGER,N:INTEGER,&BR:INTEGER):INTEGER
+	I,MAXS,SUM:INTEGER
+	
+	
+	MAXS=X[1]
+	SUM=0
+	SUM=SUM+X[1]
+	
+	I=2
+	WHILE I<=N
+		
+	
+		IF X[I]>SUM
+			MAXS=X[I]
+			BR=1
+		ENDIF
+		
+		SUM=SUM+X[I]
+		I=I+1
+	ENDWHILE
+	
+	RETURN MAKS
+
+
+
+
+
+
+START 
+X[100],M,N,I,BR:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BR=0
+M=FUN(X,N,&BR)
+
+OUTPUT M
+
+IF BR==0
+	OUTPUT "NEMA ELEMENTA"
+ELSE
+	OUTPUT M
+ENDIF
+
+END
+
+
+-----------------------------
+
+
+Kreirati algoritam kojim se unosi string S i prosleđuje funkciji ukloni. Funkcija treba da iz stringa eliminiše sve opadajuće podnizove cifara. Napisati glavni program u kojem će se demonstrirati rad realizovane funkcije
+
+
+Primjer: Za string S="432A23564sa24sd54" nakon poziva funkcije ukloni(S), string S postaje "A235sa24sd"
+
+
+
+
+UKLONI(&S[]:CHAR)
+
+S1[100]:CHAR
+I,P,Z,Z1,J,U,K,BR:INTEGER
+
+U=0
+I=0
+K=0
+WHILE S[I+2]!='\0'
+	
+	IF K!=1
+		I=I+1
+		K=0
+	ENDIF
+	
+	IF S[I]>='0' & S[I]<='9'
+		Z=char2int(S[I])-char2int('0')
+
+		J=I+1
+		BR=1
+		WHILE S[J]!='\0' & BR==1
+			IF S[J]>='0' & S[J]<='9' 
+				Z1=char2int(S[J])-char2int('0')
+			
+				IF Z>Z1
+					I=I+1
+					J=J+1
+					K=1
+					Z=Z1
+				ELSE 
+					BR=0
+				ENDIF
+				
+			
+			ELSE
+				BR=0
+			ENDIF
+		ENDWHILE
+	ENDIF
+	
+	U=U+1
+	S1[U]=S[I]
+	
+	
+ENDWHILE
+
+
+S1[U+1]='\0'
+
+I=1
+WHILE S1[I]!='\0'
+	S[I]=S1[I]
+	I=I+1
+ENDWHILE
+
+S[I]='\0'
+
+
+RETURN
+
+
+
+
+
+
+
+
+
+
+
+START 
+S[100]:CHAR
+
+INPUT S
+UKLONI(&S)
+OUTPUT S
+END
+
+
+-----------------------------
+
+
+Napisati funkciju preuređenje koja za argument niz X i njegovu dužinu N. Funkcija treba da preuredi niz X tako da se parni i neparni elementi međusobno smenjuju.
+Napisati i glavni dio algoritma koji učitava niz X, poziva napisanu funkciju i štampa tako izmenjeni niz
+
+Primer: Učitani niz [3,5,6,7,1,11,4,10] funkcija treba da preuredi na sledeći način [3,6,5,4,7,10,1,11]
+
+//ne zavisi sortiranje od vrednosti, ne sortiraju se po vrednosti, no da se smenjuju parni i neparni u nizu bez obzira na njihovu vrednost
+
+
+
+
+PREUREDJENJE(&X[]:INTEGER,N:INTEGER)
+
+
+I,Y[100],Z[100],J,U,O,P:INTEGER
+
+//Y [U] drži parne, Z[J] drži neparne
+
+I=1
+U=0
+J=0
+
+WHILE I<=N
+		IF X[I]==(X[I]/2)*2
+			U=U+1
+			Y[U]=X[I]
+		ELSE
+			J=J+1
+			Z[J]=X[I]
+		ENDIF
+		I=I+1
+	ENDWHILE
+	
+
+
+IF N!=(N/2)*2	
+
+	//parni više od neparnih, parni je višak jedan broj
+	IF U>J
+	
+		I=1
+		O=1
+		P=2
+		WHILE I<=N
+			X[I]=Z[O]
+			O=O+2
+			I=I+2
+		ENDWHILE
+		
+		WHILE I<=N
+			X[I]=Y[P]
+			P=P+2
+			I=I+2
+		ENDWHILE
+		
+		X[N]=Y[U]
+			
+		
+	
+	//neparni više od neparnih, neparni je višak jedan broj
+	ELSE
+	
+		I=1
+		O=1
+		P=2
+		WHILE I<=N
+			X[I]=Z[O]
+			O=O+2
+			I=I+2
+		ENDWHILE
+		
+		WHILE I<=N
+			X[I]=Y[P]
+			P=P+2
+			I=I+2
+		ENDWHILE
+		
+		X[N]=Z[J]
+	
+	
+	ENDIF
+	
+	
+
+ELSE
+
+	I=1
+		O=1
+		P=2
+		WHILE I<=N
+			X[I]=Z[O]
+			O=O+2
+			I=I+2
+		ENDWHILE
+		
+		WHILE I<=N
+			X[I]=Y[P]
+			P=P+2
+			I=I+2
+		ENDWHILE
+		
+ENDIF
+
+
+
+
+RETURN
+
+
+
+
+
+
+START 
+X[100],I,N:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+PREUREDJENJE(&X,N)
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+
+
+-----------------------------------------
+
+Elementi liste su strukture koje sadrže niz cijelih brojeva i njegovu dužinu. Kreirati rekurzivnu funkciju koja kao argument ima glavu liste i koja određuje koliko postoji elemenata liste kod kojih je suma elemenata paran broj
+
+
+
+TYPE LISTA
+	X[100]:INTEGER
+	N:INTEGER
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+FUN(GL:LISTA):INTEGER
+
+SUM,I:INTEGER
+
+
+I=1
+SUM=0
+WHILE I<=N
+	SUM=SUM+X[I]
+	I=I+1
+ENDWHILE
+
+
+IF SUM==(SUM/2)*2
+	IF GL.NEXT != 0
+		RETURN 1+FUN(GL.NEXT)
+	ELSE 
+		RETURN 1
+	ENDIF
+ELSE
+	IF GL.NEXT != 0
+		RETURN 0
+	ENDIF
+ENDIF
+	
+	
+-----------------------------------------
+
+
+Napisati funkciju koja kao argument ima niz cijelih
+brojeva X, dužine N. Funkcija treba da provjeri da li je unijeti niz
+simetričan u odnosu na sredinu niza. U glavnom dijelu algoritma
+unijeti niz, pozvati funkciju i odštampati odgovarajuće obavještenje.
+
+Primjer: Nizovi X=[1 5 8 13 8 5 1] i X=[1 5 8 8 5 1] su simetrični,
+dok niz X=[1 5 13 8 5] nije simetričan u odnosu na svoju sredinu
+
+
+
+
+START
+X[100],N,I:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE 
+
+FUN(X,N)
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+
+
+
+
+
+
+FUN(X[]:INTEGER,N:INTEGER)
+
+U,I,M,BR:INTEGER
+
+
+
+M=N
+U=N/2
+BR=1
+I=1
+WHILE I<=U & BR==1
+	IF X[I]==X[M]
+		BR=0
+	ENDIF
+	I=I+1
+	M=M-1
+ENDWHILE 
+		
+
+	
+IF BR==0
+	OUTPUT "NIZ NIJE SIMETRIČAN"
+ELSE
+	OUTPUT "NIZ JE SIMETRIČAN"
+ENDIF
+RETURN
+
+
+
+/*
+
+I<=U
+
+jer:
+
+1 5 8 13 8 5 1		- 7/2=3.5 = 3
+
+
+1 5 8 8 5 1 		- 6/2=3
+
+time, zaokružuje ga jer je integer...
+
+*/
+
+
+
+------------------------------
+
+
+Sastaviti funkciju Tarabe koja za argumente ima
+stringove S i P. String S sadrži dva karaktera '#', i to ne treba
+provjeravati. Funkcija treba da u string P upiše sve karaktere stringa S
+koji se nalaze između dvije tarabe. Napisati glavni program u kojem će
+se demonstrirati rad realizovane funkcije.
+
+Primjer: Za stringove S="12#abcd#X"i P="nebitno" nakon poziva
+funkcije Tarabe(S,P), string P postaje "abcd".
+
+
+
+TARABE(S[]:CHAR,&P[]:CHAR)
+	
+
+I,J,BR:INTEGER
+
+BR=1
+I=1
+WHILE S[I]!='\0' & BR==1
+	IF S[I]=='#'
+		I=I+1
+		J=1
+		WHILE S[I]!='#'
+			P[J]=S[I]
+			I=I+1
+			J=J+1
+		ENDWHILE
+		BR=0
+		
+	ENDIF
+	
+	IF BR==1
+		I=I+1
+	ENDIF
+ENDWHILE
+
+P[J]='\0'
+
+RETURN
+
+
+
+
+
+
+
+
+START 
+S[100],P[100]:CHAR
+
+INPUT S,P
+TARABE(S,&P)
+OUTPUT P
+END
+
+
+------------------------------
+
+Elementi liste su strukture koje sadrže po jedan string. Kreirati rekurzivnu funkciju koja kao argument ima glavu liste i koja
+određuje dužinu najdužeg stringa u listi. Najveću dužinu je potrebno vratiti kao rezultat.
+
+
+
+
+TYPE LISTA
+	S[100]:CHAR
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+
+FUN(GL:LISTA,MAX:INTEGER):INTEGER
+
+MAX:INTEGER
+
+
+
+IF GL!=0
+	I=1
+	WHILE GL.S[I]!='\0'
+		I=I+1
+	ENDWHILE 
+	
+
+	IF I > MAX	*
+		MAX=I
+		RETURN FUN(GL.NEXT,MAX)
+	ELSE
+		RETURN FUN(GL.NEXT,MAX)
+	ENDIF
+
+ELSE
+	RETURN MAX
+ENDIF
+
+
+*potential flaw u algoritmu. Gde deklarišemo MAX varijablu? Kad joj postavljamo početnu vrednost, tj. kako ćemo kreirati objekat MAX, koja će nam služiti kao varijabla za najveću dužinu stringa u listi. Ako bi na početku funkcije stavili, svakom rekurzivnom iteracijom bi se MAX varijabla resetirala na tu početnu vrednost... ostalo fine though
+
+
+------------------------------
+
+Napisati funkciju, u vidu algoritamske sheme ili pseudokoda, koja prima kao argumente niz i broj
+članova niza. Funkcija kao rezultat treba da vrati sumu onih članova niza koji su veći od 50 i djeljivi su sa
+3, a ujedno one članove niza koji su manji od –5 treba da uveća za 10.
+
+
+
+FUN(&X[]:INTEGER,N:INTEGER):INTEGER
+
+SUM,I,J:INTEGER
+
+
+SUM=0
+I=1
+WHILE I<=N
+	IF X[I]>50  & X[I]==(X[I]/3)*3
+		SUM=SUM+X[I]
+		
+	ELSEIF X[I]<-5
+		X[I]=X[I]+10
+		
+	ENDIF
+		
+		
+	I=I+1
+	
+ENDWHILE
+
+RETURN SUM
+
+------------------------------
+
+Napisati funkciju koja kao argumente prima dva stringa (niza karaktera) i koja vraća 1 ako prvi string
+ima veći broj malih slova od broja velikih slova u drugom stringu, 0 ako su ovi brojevi isti i –1 ako drugi
+niz ima više velikih slova nego prvi niz malih slova.
+
+
+FUN(S[]:CHAR,Z[]:CHAR):INTEGER
+
+I,J,O,U:INTEGER
+
+I=1
+J=1
+O=0
+U=0
+
+WHILE S[I]!='\0'
+	IF S[I]>='a' & S[I]<='z'
+		O=O+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+WHILE Z[J]!='\0'
+	IF S[I]>='A' & S[I]<='Z'
+		U=U+1
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF O>U
+	RETURN 1
+ELSEIF O==U
+	RETURN 0
+ELSE
+	RETURN -1
+ENDIF
+
+
+------------------------------
+
+
+Napisati funkciju, u vidu algoritamske sheme ili pseudokoda, koja prima kao argumente niz i broj
+članova niza. Funkcija kao rezultat vraća koliko je članova niza veće od 30 i istovremeno djeljivo sa 2.
+Ujedno funkcija treba da uveća ostale članove niza za 3.
+
+
+
+FUN(X[]:INTEGER,N:INTEGER):INTEGER
+
+I,J,Z:INTEGER
+
+Z=0
+
+I=1
+WHILE I<=N
+	IF X[I]>30 & X[I]==(X[I]/2)*2
+		Z=Z+1
+	ENDIF
+	
+	J=1
+	WHILE J<=N
+		IF J==I
+			J=J+1
+		ELSE
+			X[J]=X[J]+3
+			J=J+1
+		ENDIF
+	ENDWHILE
+	
+	
+	
+	
+	I=I+1
+ENDWHILE
+
+RETURN Z
+
+
+------------------------------
+
+
+
+
+
+Značenje oznaka 
+
+!=   - nije jednako
+&   - AND  (i, logičko)
+|   - OR (ili, logičko)
+=> ili >=  - veće ili jednako od 
+<= ili =<    - manje ili jednako od 
+<     - manje od 
+>     - veće od 
+=     - presipanje u promenjivu
+==    - je jednako 
+/*  */ ili //  - su komentari, objašnjenja dela algoritma
+
+
+
+
+---------------------------------------------
+
+Napisati funkciju SUSJEDNI koja za argument ima niz cijelih brojeva X, dužine N, pri čemu je niz je sortiran
+u opadajući poredak (ne provjeravati). Funkcija treba da pronađe i odštampa dva susjedna elementa niza
+koja su najbliža po vrijednosti (najmanja razlika između njih). Ako postoji više parova susjednih elemenata
+sa najmanjom razlikom, odštampati par po želji. Napisati i glavni dio algoritma koji poziva kreiranu
+funkciju i štampa njen rezultat.
+
+Primjer: Za niz X=[16 12 10 5 2], funkcija treba da odštampa brojeve 12 i 10.
+
+
+
+
+SUSJEDNI(X[]:FLOAT,N:INTEGER)
+
+MN:FLOAT
+I,P:INTEGER
+
+P=1
+MN=X[1]-X[2]
+I=2
+
+WHILE I<N
+	IF X[I]-X[I+1]<MN
+		P=I
+		MN=X[I]-X[I+1]
+	ENDIF
+	I=I+1
+ENDWHILE
+OUTPUT X[P], X[P+1]
+
+
+----------------------------------------
+
+Napisati funkciju SUSJEDNI koja za argument ima niz cijelih brojeva X, dužine N.
+ Funkcija treba da pronađe i odštampa dva susjedna elementa niza
+koja su najbliža po vrijednosti (najmanja razlika između njih). Ako postoji više parova susjednih elemenata
+sa najmanjom razlikom, odštampati par po želji. Napisati i glavni dio algoritma koji poziva kreiranu
+funkciju i štampa njen rezultat.
+
+(Niz nije sortiran, za razliku od prethodnog zadatka, ali eto, sve je isto, samo jedna mala promena)
+
+
+Primjer: Za niz X=[16 12 10 5 2], funkcija treba da odštampa brojeve 12 i 10.
+
+
+
+
+SUSJEDNI(X[]:FLOAT,N:INTEGER)
+
+MN:FLOAT
+I,P:INTEGER
+
+P=1
+MN=X[1]-X[2]
+
+
+IF MN<0
+	MN=-MN
+ENDIF
+
+I=2
+
+WHILE I<N
+	IF X[I]-X[I+1]<MN
+		P=I
+		MN=X[I]-X[I+1]
+		IF MN<0
+			MN=-MN
+		ENDIF
+	ENDIF
+	I=I+1
+ENDWHILE
+OUTPUT X[P], X[P+1]
+
+
+
+----------------------------
+Napisati funkciju CIFRE koja za argument ima string S i niz X od N cijelih brojeva. Funkcija treba da provjeri
+da li svaka cifra stringa S ima odgovarajući broj u nizu X, i u tom slučaju funkcija vraća 1. U suprotnom,
+vraća 0. Napisati i glavni dio algoritma koji poziva kreiranu funkciju i štampa njen rezultat.
+
+
+
+CIFRE(S[]:CHAR,X[]:INTEGER,N:INTEGER):INTEGER
+
+I,J,SO, BR:INTEGER
+
+I=0
+WHILE S[I+1]!='\0'
+	I=I+1
+	S[I]>='0' & S[I]<='9'
+		SO=CHAR2INT(S[I])-CHAR2INT('0')
+		IND=0
+		
+		J=1
+		WHILE J<=N
+			IF X[J]==SO
+				BR=1
+			ENDIF
+			J=J+1
+		ENDWHILE
+
+		IF BR==0
+			RETURN 0
+		ENDIF
+ENDWHILE
+RETURN 1
+
+
+
+glavni program
+
+START
+S[100]:CHAR
+X[100],N,I,M:INTEGER
+
+INPUT N,S
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+
+M=CIFRE(S,X,N)
+
+IF M==1
+	OUTPUT "IMAJU"
+ELSE
+	OUTPUT "NEMAJU"
+ENDIF
+END
+
+
+------------------
+
+
+Napisati program koji učitava niz cijelih brojeva X, dužine N. U datom nizu potrebno je pronaći i odštampati elemenat za koji važi da je suma svih elemenata sa njegove lijeve strane jednaka sumi svih elemenata sa njegove desne strane. Ukoliko takav elemenat ne postoji potrebno je odštampati obavještenje "Ne postoji".
+
+Primjer: Za niz X=[1 12 5 6 4 3] treba da bude odštampan broj 5, dok za niz X=[-1 7 -3 -5 9 -2] treba da
+bude odštampan broj 9.
+
+
+
+START
+X[100],N,I,J,Z,SUM1,SUM2,BR:INTEGER
+
+
+INPUT N
+
+BR=0
+
+Z=1
+WHILE Z<=N
+	INPUT X[Z]
+	Z=Z+1
+ENDWHILE
+
+
+
+Z=1
+WHILE Z<=N & BR==0
+
+	SUM1=0
+	SUM2=0
+	I=1
+	WHILE I<Z
+		SUM1=SUM1+I
+		I=I+1
+	ENDWHILE
+	
+	J=Z+1
+	WHILE J<=N
+		SUM2=SUM2+J
+		J=J+1
+	ENDWHILE
+
+	IF SUM1==SUM2
+		BR=1
+	ENDIF
+I=I+1
+ENDWHILE
+	
+IF BR==1
+	OUTPUT X[Z]
+ELSE
+	OUTPUT "NE POSTOJI"
+ENDIF
+END
+
+
+-----------------------------------
+
+Napisatu funkciju JEDINICE koja za argument ima niz cjelobrojnih vrijednosti A. Funkcija treba da zamijeni
+element niza sa brojem desetica tog elementa. Ukoliko je element jednocifren upisati -1. Napisati i glavni
+program koji učitava niz A, poziva napisanu funkciju i štampa rezultat.
+
+
+
+JEDINICE(&A[]:INTEGER,N:INTEGER):INTEGER
+
+I,M,P:INTEGER
+
+I=1
+WHILE I<=N
+	M=X[I]
+	
+	
+	IF M<=9
+	X[I]=-1
+	
+	ELSE
+		M=M/10
+		P=M-(M/10)*10
+		X[I]=P
+	ENDIF
+	I=I+1
+ENDWHILE
+
+RETURN
+
+
+
+glavni program
+
+START 
+A[100]:INTEGER
+N,I:INTEGER
+
+INPUT N
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+JEDINICE(&A,N)
+
+I=1
+WHILE I<=N
+	OUTPUT X[I]
+	I=I+1
+ENDWHILE
+END
+
+---------------------------
+
+Napisati program koji učitava niz cijelih brojeva X, dužine N i cio broj T. Pretpostaviti da je niz X sortiran
+u rastući poredak (ne treba provjeravati). Program treba da pronađe da li u nizu X postoje dva elementa
+čiji je količnik jednak broju T. Ukoliko postoje, odštampati te brojeve. Ukoliko postoji više parova takvih
+brojeva odštampati jedan par po izboru. Ukoliko ne postoje takva dva broja, odštampati odgovarajuću
+poruku.
+
+Primjer: Za niz X=[3 7 12 15 28] i T=4 program treba da odštampa brojeve 3 i 12 ili 7 i 28. Za niz X=[3 4
+13] i T=4, program treba da odštampa poruku da nema takih brojeva.
+
+
+
+
+START
+X[100],N,T,I,J, KL, BR:INTEGER
+
+INPUT N, T
+
+I=1
+WHILE I<=N
+	INPUT X[I]
+	I=I+1
+ENDWHILE
+
+BR=0
+I=N
+J=N-1
+WHILE I>1 & BR==0
+
+	WHILE J=>1 & BR==0
+	
+		KL=X[I]/X[J]
+		IF KL==T
+			BR=1
+			OUTPUT X[J], X[I]
+		ENDIF
+	
+		J=J-1
+	ENDWHILE
+I=I-1
+J=I-1
+ENDWHILE
+
+IF BR==0
+	OUTPUT "NEMA TAKVIH BROJEVA"
+ENDIF
+END
+
+
+---------------------------------
+
+Kreirati strukturu NEPAR, koja kao podatke članove ima niz cijelih brojeva X i njegovu dužinu N. Kreirati
+funkciju koja za ulazni argument ima dvije strukture tipa NEPAR i koja kao rezultat vraća broj 1 ako prva
+struktura ima sve elemente niza kao neparne ili 2 ako druga struktura ima sve elemente neparne. Ukoliko
+nijedna od struktura ne zadovoljava postavljeni uslov vratiti -1.
+
+
+
+
+TYPE NEPAR
+	X[100]:INTEGER
+	N:INTEGER
+ENDTYPE
+
+
+
+
+FUN(A:NEPAR,B:NEPAR):INTEGER
+
+I,BR1, BR2,J:INTEGER
+
+
+I=1
+J=A.N
+BR1=1
+WHILE I<=J & BR1==1
+	
+	IF A.X[I]==(A.X[I]/2)*2
+		BR1=0
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+J=B.N
+BR2=1
+WHILE I<=J & BR2==1
+	
+	IF B.X[I]==(B.X[I]/2)*2
+		BR2=0
+	ENDIF
+	I=I+1
+ENDWHILE
+
+IF BR1==1
+	RETURN 1
+ELSEIF BR2==1
+	RETURN 2
+ELSE
+	RETURN -1
+ENDIF
+
+
+----------------------
+
+Elementi liste su strukture koje sadrže jedan string. Kreirati rekurzivnu funkciju koja kao argument ima
+glavu liste i određuje da li su stringovi u listi leksikografski uređeni u rastući poredak.
+
+
+
+TYPE LISTA
+	S[100]:CHAR
+	*NEXT[]:LISTA
+ENDTYPE
+
+
+FUN(&GL:LISTA):INTEGER
+
+I:INTEGER
+
+IF GL.NEXT != 0
+	
+	IF POREDISTR(GL.S,GL.NEXT.S)>0
+		RETURN -1
+	ELSE
+		RETURN FUN(GL.NEXT)
+ELSE
+	RETURN 1
+	
+ENDIF
+
+
+------------------------
+
+Kreirati strukturu VELIKO, koja za podatke ima dva cijela broja X i Y i string B. Napisati funkciju poredi
+koja za ulazni argument ima dvije strukture tipa VELIKO i koja kao rezultat vraća prvo veliko slovo stringa
+one strukture koja ima veću vrijednost podatka X.
+
+
+
+
+TYPE VELIKO
+	X:INTEGER
+	Y:INTEGER
+	B[100]:CHAR
+ENDTYPE
+
+
+POREDI(A:VELIKO,B:VELIKO):CHAR
+
+I,J,M,Z:INTEGER
+
+I=A.X
+J=B.X
+
+IF I>J
+	Z=1
+	WHILE A.B[Z]!='\0'
+		IF A.B[Z]>='A' & A.B[Z]<='Z'
+			RETURN A.B[Z]
+		ENDIF
+		Z=Z+1
+	ENDWHILE
+	
+ELSEIF J>I
+	Z=1
+	WHILE A.B[Z]!='\0'
+		IF A.B[Z]>='A' & A.B[Z]<='Z'
+			RETURN A.B[Z]
+		ENDIF
+		Z=Z+1
+	ENDWHILE
+ENDIF
+
+
+
+--------------------------
+
+
+Napisati program kojim se učitava niz studenata definisanih strukturom STUDENT, koja sadrži ime
+studenta i niz njegovih ocjena. Potrebno je realizovati funkciju SREDNJA_OCJENA, kojoj se kao argument
+prosljeduje formiran niz struktura tipa STUDENT, a kao rezultat je potrebno odrediti i odštampati
+pojedinačne prosječne ocjene studenata i njihovu ukupnu prosječnu ocjenu.
+
+
+
+TYPE STUDENT
+	IME[100]:CHAR
+	OCJENE[50]:INTEGER
+	BPI:INTEGER
+
+ENDTYPE
+
+
+
+
+
+glavni program
+
+START
+A[130]:STUDENT
+IMET[100]:CHAR
+I,J,OC,PI,N,Z:INTEGER
+SR:FLOAT
+
+
+
+INPUT N
+
+J=1
+WHILE J<=N
+
+
+	INPUT PI,IMET
+	
+	Z=1
+	WHILE IME[Z]!='\0'
+	
+		A[J].IME[Z]=IMET[Z]
+		Z=Z+1
+	ENDWHILE
+	
+	A[J].BPI=PI
+	
+	I=1
+	WHILE I<=PI
+		INPUT OC
+		A[J].OCJENE[I]=OC
+		I=I+1
+	ENDWHILE
+	
+	
+	J=J+1
+ENDWHILE
+
+SR= SREDNJA_OCJENA(A,N)
+OUTPUT SR
+END
+
+
+
+	
+
+
+
+
+
+
+
+
+SREDNJA_OCJENA(A:STUDENT,P:INTEGER):FLOAT
+
+I:INTEGER
+SR,SRI,SRUM,BRUM,BR, ZUI:FLOAT
+
+SRUM=0
+BRUM=P
+I=1
+WHILE I<=BRUM
+	Z=1
+	SR=0
+	BR=A[I].BPI
+	WHILE Z<=BR
+		SR=SR+A[I].OCJENE[Z]
+		Z=Z+1
+	ENDWHILE
+	SRI=SR/BR
+	OUTPUT SRI
+	SRUM=SRUM+SRI
+
+I=I+1
+ENDWHILE
+ZUI=SRUM/BRUM
+
+RETURN ZUI
+
+
+
+--------------------
+
+* Kreirati strukturu KOLOKVIJUM, koja za podatke ima string SALA, niz cijelih brojeva BROJ_INDEKSA
+koji predstavlja broj indeksa studenata koji su se prijavili da rade kolokvijuma, niz cijeli brojeva
+GODINA_UPISA koji predstavlja godine upisa studenata (I-ti element niza BROJ_INDEKSA i I-ti element
+niza GODINA_UPISA određuju broj indeksa i godinu upisa I-tog studenta), dužinu pomenutih nizova
+BROJ_STUDENATA. Napisati funkciju koja za ulazni argument ima jednu strukturu tipa KOLOKVIJUM.
+Funkcija treba da odštampa sve brojeve indeksa i godine upisa studenata sa najvećom godinom upisa.
+
+
+
+
+TYPE KOLOKVIJUM
+	SALA[100]:CHAR
+	BROJ_INDEKSA[100]:INTEGER
+	GODINA_UPISA[100]:INTEGER
+	BROJ_STUDENATA:INTEGER
+	
+ENDTYPE
+
+
+
+
+
+
+FUN(A:KOLOKVIJUM)
+
+MAX,I:INTEGER
+
+MAX=A.GODINA_UPISA[1]
+I=2
+WHILE I<=BROJ_STUDENATA
+	IF A.GODINA_UPISA[I] > MAX
+		MAX=A.GODINA_UPISA
+	ENDIF
+	I=I+1
+ENDWHILE
+
+I=1
+WHILE I<=BROJ_STUDENATA
+	IF A.GODINA_UPISA[I] == MAX
+		OUTPUT BROJ_INDEKSA
+		OUTPUT GODINA_UPISA
+	ENDIF
+	I=I+1
+ENDWHILE
+
+RETURN 
+
+
+
+-------------------------------
+
+
+Kreirati klasu AUTOMOBIL koja za podatke ima marku (string), starost u godinama (cio broj), broj
+pređenih kilometara (cio broj) i potrošnju goriva na 100 km (realan broj). Klasa treba da ima bar po dva
+konstruktora, mutatora i inspektora. Realizovati ove funkcije članice, kao i funkciju članicu NAJVECI koja
+kao argument ima niz automobila a određuje i štampa najvećeg od njih. Od dva automobila, veći je onaj
+koji je stariji. Ako su jednako stari, veći je onaj koji ima veći broj pređenih kilometara. Ako je i kilometraža
+ista, veći je onaj koji ima veću potrošnju.
+
+
+
+CLASS AUTOMOBIL
+	MARKA[100]:CHAR
+	AGE:INTEGER
+	KIL:INTEGER
+	POT:FLOAT
+	AUTOMOBIL()
+	AUTOMOBIL(IM[]:CHAR,A:INTEGER,P:FLOAT)
+	GET_KIL():INTEGER
+	GET_AGE():INTEGER
+	SET_AGE(A:INTEGER)
+	SET_KIL(A:INTEGER)
+	FRIEND NAJVECI(A[]:AUTOMOBIL,N:INTEGER)
+	
+ENDCLASS
+
+
+AUTOMOBIL() 	FROM AUTOMOBIL
+
+
+MARKA[1]='\0'
+AGE=0
+KIL=0
+POT=0
+
+
+AUTOMOBIL(IM[]:CHAR,A:INTEGER,P:FLOAT)		FROM AUTOMOBIL
+I:INTEGER
+
+I=1
+WHILE IM[I]!='\0'
+	MARKA[I]=IM[I]
+	I=I+1
+ENDWHILE
+AGE=A
+POT=P
+
+
+
+GET_KIL():INTEGER		FROM AUTOMOBIL
+	RETURN KIL
+
+
+GET_AGE():INTEGER		FROM AUTOMOBIL
+	RETURN AGE
+
+
+
+SET_KIL(A:INTEGER)		FROM AUTOMOBIL
+	KIL=A
+
+
+
+SET_AGE(A:INTEGER)		FROM AUTOMOBIL
+	AGE=A
+
+
+
+NAJVECI(A[]:AUTOMOBIL,N:INTEGER)		FROM AUTOMOBIL
+
+I:INTEGER
+MAXAG,MAXKI,MAXI:INTEGER
+MAXPO:FLOAT
+
+
+MAXI=1
+MAXAG=A[1].AGE
+MAXKI=A[1].KIL
+MAXPO=A[1].POT
+
+I=2
+WHILE I<=N
+	IF A[I].AGE > MAXAG
+		MAXI=I
+		MAXAG=A[I].AGE
+		MAXKI=A[I].KIL
+		MAXPO=A[I].POT
+
+	ELSEIF A[I].AGE == MAXAG & A[I].KIL > MAXKI
+		MAXI=I
+		MAXAG=A[I].AGE
+		MAXKI=A[I].KIL
+		MAXPO=A[I].POT
+
+
+	ELSEIF A[I].KIL == MAXKI & A[I].POT > MAXPO
+		MAXI=I
+		MAXAG=A[I].AGE
+		MAXKI=A[I].KIL
+		MAXPO=A[I].POT
+
+	ENDIF
+	I=I+1
+ENDWHILE
+
+OUTPUT A[MAXI].MARKA
+OUTPUT A[MAXI].AGE
+OUTPUT A[MAXI].KIL
+OUTPUT A[MAXI].POT
+
+RETURN		
+
+
+
+---------------------------
+
+
+* Kreirati klasu PREGLED koja ima podatke članove NAZIV (string – naziv pacijenta), BROJ_UZORAKA (cio
+broj koje predstavlja broj uzetih uzoraka u izvještaju), MJERENJA (niz realnih brojeva gdje I-ti element
+vrijednost I-tog uzorka). Klasa treba da ima bar po dva konstruktora, mutatora i inspektora. Realizovati
+ove funkcije članice, kao i funkciju članicu MIN koja za argument ima cio broj K. Ukoliko je K=1 funkcija
+računa minimalno mjerenje. Ukoliko je K=2, funckija računa drugo najmanje mjerenje, itd...
+
+
+CLASS PREGLED
+	NAZIV[100]:CHAR
+	BROJ_UZORAKA:INTEGER
+	MJERENJA[100]:FLOAT
+	PREGLED()
+	PREGLED(B:INTEGER)
+	SET(S[]:CHAR)
+	SET2(B:INTEGER)
+	GET1():INTEGER
+	GET2()
+
+ENDCLASS
+
+
+PREGLED()		FROM PREGLED
+
+NAZIV[1]='\0'
+BROJ_UZORAKA=0
+MJERENJA[1]=0
+
+
+
+
+PREGLED(B:INTEGER)		FROM PREGLED
+	BROJ_UZORAKA=B
+
+
+
+SET(S[]:CHAR)		FROM PREGLED
+I:INTEGER
+I=1
+WHILE S[I]!='\0'
+	NAZIV[I]=S[I]
+	I=I+1
+ENDWHILE
+
+
+
+
+SET2(B:INTEGER)			FROM PREGLED
+	BROJ_UZORAKA=B
+
+
+
+GET1():INTEGER			FROM PREGLED
+	RETURN BROJ_UZORAKA
+
+
+GET2()				FROM PREGLED
+I:INTEGER
+OUTPUT BROJ_UZORAKA
+OUTPUT NAZIV
+
+I=1
+WHILE I<=BROJ_UZORAKA
+	OUTPUT MJERENJA[I]
+	I=I+1
+ENDWHILE 
+
+-------------------------
+
+Kreirati klasu RADNIK koja ima podatke članove KOEFICIJENT (cijeli broj – koeficijent za platu), BROJ
+(cijeli broj – identifikacioni broj radnika), IME (string – ime radnika). Realizovati funkciju članicu koja od
+dva radnika vraća ime radnika sa većim koeficijentom za platu.
+
+
+CLASS RADNIK
+	KOEFICIJENT:INTEGER
+	BROJ:INTEGER
+	IME[100]:CHAR
+	RADNIK()
+	SET(K:INTEGER,B:INTEGER,S[]:CHAR)
+	BOLJI(R:RADNIK)
+ENDCLASS
+
+
+//samo ova funkcija...
+BOLJI(R:RADNIK)		FROM RADNIK
+	IF KOEF>R.KOEF
+		OUTPUT IME
+	ELSE
+		OUTPUT R.IME
+	ENDIF
+
+RETURN
+
+
+--------------------------------------
+
+Kreirati klasu TACKA koja ima podatke članove X, Y (realni brojevi – koordinate tačke) i funkciju članicu
+za računanje rastojanja između dvije tačke. Nakon toga kreirati klasu KRUG koja kao podatak član sadrži
+CENTAR (TACKA – predstavlja centar kruga) i funkcije članice za izračunavanje obima i površine kruga.
+
+
+
+
+CLASS TACKA
+X,Y:FLOAT
+DIST(T:TACKA):FLOAT
+ENDCLASS
+
+CLASS KRUG
+	CENTAR:TACKA
+	R:FLOAR
+	OBIM():FLOAT
+	POVRS():FLOAT
+ENDCLASS
+
+
+DIST(T:TACKA):FLOAT FROM TACKA
+RETURN SQRT((X-T.X)*(X-T.X)+(Y-T.Y)*(Y-T.Y))
+
+
+OBIM():FLOAT FROM KRUG
+RETURN 2*R*3.1415926
+
+POVRS():FLOAT FROM KRUG
+RETURN R*R*3.1415926
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
